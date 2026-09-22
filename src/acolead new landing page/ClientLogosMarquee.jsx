@@ -208,7 +208,7 @@ const ClientLogosMarquee = () => {
           component="h2"
           sx={{
             fontWeight: 800,
-            fontSize: { xs: '1.6rem', sm: '2.1rem', md: '2.5rem' },
+            fontSize: { xs: '1.3rem', sm: '2.1rem', md: '2.5rem' },
             color: '#0F172A',
             letterSpacing: '-0.02em',
             mb: 1,

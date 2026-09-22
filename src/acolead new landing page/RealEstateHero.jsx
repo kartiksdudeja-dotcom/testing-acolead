@@ -173,15 +173,20 @@ const RealEstateHero = ({ handleScrollToForm }) => {
         <>
             <Box
                 sx={{
-                    backgroundImage: "url('/images/bg1.png')",
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
+                    backgroundImage: {
+                        xs: "url('/images/bg5.png')",
+                        md: "url('/images/bg1.png')",
+                    },
+                    backgroundSize: { xs: 'cover', md: 'cover' },
+                    backgroundPosition: { xs: 'top center', md: 'center' },
+                    backgroundRepeat: 'no-repeat',
                     minHeight: '82vh',
                     display: 'flex',
+                    flexDirection: 'column',
                     alignItems: 'center',
                     justifyContent: 'center',
                     px: { xs: 2, sm: 3, md: 4 },
-                    py: isMobile ? 4 : 5,
+                    py: { xs: 0, sm: 4, md: 5 },
                     position: 'relative',
                     overflow: 'hidden',
                     borderBottom: '1px solid #E2E8F0',
@@ -191,10 +196,12 @@ const RealEstateHero = ({ handleScrollToForm }) => {
                 sx={{
                     display: 'flex',
                     flexDirection: isMobile ? 'column' : 'row',
-                    alignItems: 'center',
+                    alignItems: { xs: 'flex-start', md: 'center' },
+                    justifyContent: 'center',
                     maxWidth: '1240px',
                     width: '100%',
                     gap: { xs: 4, md: 5 },
+                    px: { xs: 0, sm: 0 },
                 }}
             >
                 {/* Left Content */}
@@ -204,7 +211,9 @@ const RealEstateHero = ({ handleScrollToForm }) => {
                         display: 'flex',
                         flexDirection: 'column',
                         gap: 1.8,
-                        textAlign: isMobile ? 'center' : 'left',
+                        textAlign: 'left',
+                        width: '100%',
+                        pt: { xs: 7, md: 0 },
                         minHeight: isMobile ? 'auto' : '470px',
                         justifyContent: 'center',
                         position: 'relative',
@@ -215,10 +224,20 @@ const RealEstateHero = ({ handleScrollToForm }) => {
                 >
                     {/* Badge: REAL ESTATE CRM SOFTWARE */}
                     <motion.div
-                        variants={slideInVariant}
-                        initial="hidden"
-                        animate={inView ? 'visible' : 'hidden'}
-                    >
+    variants={slideInVariant}
+    initial="hidden"
+    animate={inView ? 'visible' : 'hidden'}
+    style={{
+    position: isMobile ? 'absolute' : 'relative',
+    top: isMobile ? -190 : 'auto',
+    left: isMobile ? 0 : 'auto',
+    width: isMobile ? 'auto' : '100%',
+    display: 'flex',
+    justifyContent: 'flex-start',
+    boxSizing: 'border-box',
+    zIndex: 2,
+}}
+>
                         <Box
                             sx={{
                                 display: 'inline-flex',
@@ -229,7 +248,7 @@ const RealEstateHero = ({ handleScrollToForm }) => {
                                 borderRadius: '50px',
                                 bgcolor: 'rgba(22, 119, 247, 0.08)',
                                 border: '1px solid rgba(22, 119, 247, 0.22)',
-                                alignSelf: isMobile ? 'center' : 'flex-start',
+                                alignSelf: 'flex-start',
                                 mb: 0.5,
                             }}
                         >
@@ -267,9 +286,13 @@ const RealEstateHero = ({ handleScrollToForm }) => {
                             variant="h1"
                             sx={{
                                 fontWeight: 800,
-                                fontSize: isMobile ? '1.75rem' : '2.8rem',
+                                fontSize: isMobile ? '1.9rem' : '2.8rem',
                                 color: '#0F172A',
                                 lineHeight: 1.18,
+                                position: isMobile ? 'absolute' : 'relative',
+                                top: isMobile ? -135 : 'auto',
+                                left: isMobile ? 0 : 'auto',
+                                width: isMobile ? '60%' : '100%',
                                 letterSpacing: '-0.02em',
                                 mb: 0.5,
                             }}
@@ -293,6 +316,7 @@ const RealEstateHero = ({ handleScrollToForm }) => {
                         initial="hidden"
                         animate={inView ? 'visible' : 'hidden'}
                         transition={{ delay: 0.2, duration: 1 }}
+                        style={{ display: isMobile ? 'none' : 'block' }}
                     >
                         <Typography
                             sx={{
@@ -307,7 +331,14 @@ const RealEstateHero = ({ handleScrollToForm }) => {
                     </motion.div>
 
                     {/* 6 Features Interactive Animated Carousel Transition */}
-                    <Box sx={{ position: 'relative', minHeight: isMobile ? '70px' : '80px', my: 0.5 }}>
+                    <Box
+                        sx={{
+                            display: { xs: 'none', md: 'block' },
+                            position: 'relative',
+                            minHeight: '80px',
+                            my: 0.5,
+                        }}
+                    >
                         <AnimatePresence mode="wait" custom={direction}>
                             <motion.div
                                 key={activeStep}
@@ -320,18 +351,21 @@ const RealEstateHero = ({ handleScrollToForm }) => {
                             >
                                 <Box
                                     sx={{
-                                        p: 1.5,
+                                        p: { xs: 1, md: 1.5 },
+                                        width: { xs: '70%', md: '100%' },
+                                        maxWidth: { xs: 310, md: 'none' },
+                                        alignSelf: 'flex-start',
                                         borderRadius: '12px',
                                         bgcolor: 'rgba(255, 255, 255, 0.95)',
                                         border: `1px solid ${activePillar.accent}35`,
                                         boxShadow: '0 4px 14px rgba(0, 0, 0, 0.04)',
                                     }}
                                 >
-                                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 0.4 }}>
+                                    <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: 0.7, md: 1 }, mb: 0.25 }}>
                                         <Box
                                             sx={{
-                                                width: 26,
-                                                height: 26,
+                                                width: { xs: 22, md: 26 },
+                                                height: { xs: 22, md: 26 },
                                                 borderRadius: '50%',
                                                 display: 'flex',
                                                 alignItems: 'center',
@@ -341,16 +375,16 @@ const RealEstateHero = ({ handleScrollToForm }) => {
                                                 border: '1px solid rgba(255,255,255,0.8)',
                                             }}
                                         >
-                                            <PillarIcon sx={{ fontSize: 15, color: '#fff' }} />
+                                            <PillarIcon sx={{ fontSize: { xs: 13, md: 15 }, color: '#fff' }} />
                                         </Box>
-                                        <Typography sx={{ fontWeight: 700, fontSize: '0.9rem', color: activePillar.accent }}>
+                                        <Typography sx={{ fontWeight: 700, fontSize: { xs: '0.8rem', md: '0.9rem' }, color: activePillar.accent }}>
                                             {activePillar.label}
                                         </Typography>
                                     </Box>
                                     <Typography
                                         sx={{
-                                            fontSize: isMobile ? '0.8rem' : '0.86rem',
-                                            lineHeight: 1.5,
+                                            fontSize: isMobile ? '0.72rem' : '0.86rem',
+                                            lineHeight: 1.35,
                                             color: '#334155',
                                         }}
                                     >
@@ -414,18 +448,22 @@ const RealEstateHero = ({ handleScrollToForm }) => {
                             endIcon={<ArrowForwardIcon />}
                             onClick={handleScrollToForm}
                             sx={{
-                                alignSelf: isMobile ? 'center' : 'flex-start',
+                                alignSelf: 'flex-start',
                                 bgcolor: '#1677F7',
                                 textTransform: 'none',
                                 fontWeight: 700,
-                                px: isMobile ? 4 : 5,
-                                py: isMobile ? 1.3 : 1.5,
+                                px: isMobile ? 2 : 5,
+                                py: isMobile ? 1 : 1.5,
                                 color: 'white',
-                                fontSize: isMobile ? '0.95rem' : '1.05rem',
+                                fontSize: isMobile ? '0.9rem' : '1.05rem',
                                 borderRadius: 3,
                                 mt: 1,
+                                position: isMobile ? 'absolute' : 'relative',
+                                top: isMobile ? 80 : 'auto',
+                                left: isMobile ? 0 : 'auto',
+                                width: isMobile ? 'auto' : '41%',
                                 boxShadow: '0 6px 20px rgba(22, 119, 247, 0.3)',
-                                position: 'relative',
+                                
                                 overflow: 'hidden',
                                 '&::before': {
                                     content: '""',
@@ -459,66 +497,19 @@ const RealEstateHero = ({ handleScrollToForm }) => {
 
 
                     {/* Mobile Stepper Controls */}
-                    {isMobile && (
-                        <MobileStepper
-                            steps={realEstatePillars.length}
-                            position="static"
-                            activeStep={activeStep}
-                            sx={{
-                                backgroundColor: 'transparent',
-                                px: 0,
-                                py: 1,
-                                '& .MuiMobileStepper-dot': {
-                                    backgroundColor: '#CBD5E1',
-                                    width: 8,
-                                    height: 8,
-                                    borderRadius: '50%',
-                                    transition: 'all 0.3s ease',
-                                },
-                                '& .MuiMobileStepper-dotActive': {
-                                    backgroundColor: activePillar.accent,
-                                    width: 14,
-                                    height: 8,
-                                    borderRadius: 4,
-                                },
-                            }}
-                            nextButton={
-                                <Button
-                                    size="small"
-                                    onClick={handleNext}
-                                    sx={{
-                                        color: activePillar.accent,
-                                        fontWeight: 600,
-                                        textTransform: 'none',
-                                        fontSize: '0.8rem',
-                                    }}
-                                >
-                                    Next <ArrowForwardIcon fontSize="small" sx={{ ml: 0.5 }} />
-                                </Button>
-                            }
-                            backButton={
-                                <Button
-                                    size="small"
-                                    onClick={handleBack}
-                                    sx={{
-                                        color: activePillar.accent,
-                                        fontWeight: 600,
-                                        textTransform: 'none',
-                                        fontSize: '0.8rem',
-                                    }}
-                                >
-                                    <ArrowBackIcon fontSize="small" sx={{ mr: 0.5 }} /> Back
-                                </Button>
-                            }
-                        />
-                    )}
+                    
+                            
+                            
+                                
+                            
+                     
                 </Box>
 
                 {/* Right Column: Photos (mainimg with floating calender, sales, card) */}
                 <Box
                     sx={{
                         flex: 1,
-                        display: 'flex',
+                        display: { xs: 'none', md: 'flex' },
                         justifyContent: 'center',
                         position: 'relative',
                         overflow: 'visible',
