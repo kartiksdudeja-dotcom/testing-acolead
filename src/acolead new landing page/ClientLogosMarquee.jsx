@@ -208,7 +208,11 @@ const ClientLogosMarquee = () => {
           component="h2"
           sx={{
             fontWeight: 800,
+<<<<<<< HEAD
             fontSize: { xs: '1.3rem', sm: '2.1rem', md: '2.5rem' },
+=======
+            fontSize: { xs: '1.6rem', sm: '2.1rem', md: '2.5rem' },
+>>>>>>> 99616d3 (Update Acolead landing page)
             color: '#0F172A',
             letterSpacing: '-0.02em',
             mb: 1,
