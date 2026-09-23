@@ -155,7 +155,7 @@ const ClientLogosMarquee = () => {
 
           /* Bigger logos for images with extra whitespace */
           .real-client-logo-img.big-logo {
-            max-height: 180px;
+            max-height: 150px;
             max-width: 280px;
           }
             .real-client-logo-img.mittal-logo {
@@ -208,11 +208,7 @@ const ClientLogosMarquee = () => {
           component="h2"
           sx={{
             fontWeight: 800,
-<<<<<<< HEAD
             fontSize: { xs: '1.3rem', sm: '2.1rem', md: '2.5rem' },
-=======
-            fontSize: { xs: '1.6rem', sm: '2.1rem', md: '2.5rem' },
->>>>>>> 99616d3 (Update Acolead landing page)
             color: '#0F172A',
             letterSpacing: '-0.02em',
             mb: 1,
