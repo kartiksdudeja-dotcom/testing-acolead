@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   payload:
-    image: shivram8080/testtoday:latest
+    image: yogeshays123/acolead-cms:latest
     build:
       context: .
       dockerfile: Dockerfile

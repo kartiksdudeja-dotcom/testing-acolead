@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - acolead-cms-blog
+      - develop
     paths:
       - 'cms/**'
       - '.github/workflows/cms-deploy.yml'
@@ -35,8 +36,8 @@ jobs:
           file: ./cms/Dockerfile
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/testtoday:latest
-            ${{ secrets.DOCKERHUB_USERNAME }}/testtoday:${{ github.sha }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/acolead-cms:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/acolead-cms:${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -50,7 +51,7 @@ jobs:
           script: |
             cd /var/www/cms
 
-            echo "==> Pulling latest CMS image (${{ secrets.DOCKERHUB_USERNAME }}/testtoday:latest)..."
+            echo "==> Pulling latest CMS image (${{ secrets.DOCKERHUB_USERNAME }}/acolead-cms:latest)..."
             docker compose pull payload
 
             echo "==> Updating Payload CMS container..."
