@@ -36,10 +36,10 @@ const Footer = ({ scrollToSection }) => {
                                 Manage leads. Close deals. Build Your Presence with Acolead
                             </Typography>
                             <Box>
-                                <IconButton sx={{ color: 'white' }} component="a" href="" target="_blank">
+                                <IconButton sx={{ color: 'white' }} component="a" href="https://www.instagram.com/acolead/" target="_blank" rel="noopener noreferrer">
                                     <Insta />
                                 </IconButton>
-                                <IconButton sx={{ color: 'white' }} component="a" href="" target="_blank">
+                                <IconButton sx={{ color: 'white' }} component="a" href="https://www.facebook.com/acolead" target="_blank" rel="noopener noreferrer">
                                     <Facebook />
                                 </IconButton>
                                 <IconButton

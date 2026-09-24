@@ -17,7 +17,7 @@ export const APP_URLS = {
     // coalitionifyWebsite: "https://www.coalitionify.com",
     coalitionifyWebsite: "https://www.linkedin.com/company/coalitionify-innovate",
     coalitionifyLinkedin: "https://www.linkedin.com/company/coalitionify-innovate",
-    coalitionifyFacebook: "https://www.facebook.com/profile.php?id=61576111686686",
-    coalitionifyInstagram: "https://www.instagram.com/acolead_crm",
+    coalitionifyFacebook: "https://www.facebook.com/acolead",
+    coalitionifyInstagram: "https://www.instagram.com/acolead/",
     coalitionifyWhatsApp: "https://api.whatsapp.com/send?phone=919158661188&text=I%20want%20to%20know%20more%20about%20your%20CRM%20?",
 };
