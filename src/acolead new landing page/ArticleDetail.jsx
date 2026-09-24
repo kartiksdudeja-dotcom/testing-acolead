@@ -590,11 +590,11 @@ const ShareThisArticle = () => {
   };
 
   const shareOnFacebook = () => {
-    window.open('https://www.facebook.com/acolead/', '_blank', 'noopener,noreferrer');
+    window.open('https://www.facebook.com/acolead', '_blank', 'noopener,noreferrer');
   };
 
   const openInstagram = () => {
-    window.open('https://www.instagram.com/acolead_crm/', '_blank', 'noopener,noreferrer');
+    window.open('https://www.instagram.com/acolead/', '_blank', 'noopener,noreferrer');
   };
 
   const shareOnWhatsApp = () => {
