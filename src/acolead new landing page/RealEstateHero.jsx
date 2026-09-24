@@ -345,9 +345,9 @@ const RealEstateHero = ({ handleScrollToForm }) => {
                                 <Box
                                     sx={{
                                         p: { xs: 1, md: 1.5 },
-                                        width: { xs: '70%', md: '100%' },
-                                        maxWidth: { xs: 310, md: 'none' },
-                                        alignSelf: 'flex-start',
+                                        width: { xs: '92%', md: '100%' },
+                                        maxWidth: { xs: 380, md: 'none' },
+                                        mx: { xs: 'auto', md: 0 },
                                         borderRadius: '12px',
                                         bgcolor: 'rgba(255, 255, 255, 0.95)',
                                         border: `1px solid ${activePillar.accent}35`,

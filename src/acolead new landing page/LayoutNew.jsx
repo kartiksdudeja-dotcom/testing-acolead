@@ -4,7 +4,7 @@ import { Box } from '@mui/material';
 import Header from './Header';
 import RealEstateHero from './RealEstateHero';
 import HomePage from './HomePage';
-import ImgSection from './ImgSection';
+// import ImgSection from './ImgSection';
 import Mission from './Mission';
 import KeyFeatures from './KeyFeatures';
 import HorizontalBar from './HorizontalBar';
@@ -12,7 +12,7 @@ import BlogSection from './BlogSection';
 import Plans from './Plans';
 import BookDemo from './BookDemo';
 import Footer from './Footer';
-import ProductModules from '../new components/acolead-modules/ProductModules';
+// import ProductModules from '../new components/acolead-modules/ProductModules';
 import ClientLogosMarquee from './ClientLogosMarquee';
 
 const LayoutNew = () => {
@@ -119,11 +119,13 @@ const LayoutNew = () => {
             {/* TRUSTED BY REAL ESTATE BUSINESSES CLIENT LOGO PIPELINE */}
             <ClientLogosMarquee />
 
-            <ProductModules />
+            {/* <ProductModules /> */}
 
+            {/*
             <Box>
                 <ImgSection aboutRef={aboutRef} />
             </Box>
+            */}
 
             <Mission />
 
