@@ -26,7 +26,9 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 ENV NEXT_TELEMETRY_DISABLED=1
+ENV NODE_OPTIONS="--max-old-space-size=4096 --no-deprecation"
 ENV PAYLOAD_SECRET=build_secret_temp_payload_1234567890
+ENV DATABASE_URL="mongodb://127.0.0.1:27017/cms_dummy"
 
 RUN \
   if [ -f yarn.lock ]; then yarn run build; \

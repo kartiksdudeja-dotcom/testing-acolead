@@ -127,7 +127,7 @@ const Privacy = () => {
       >
         <h1>Privacy Policy</h1>
         <p>
-          <strong>Effective Date:</strong> March 30, 2025
+          <strong>Effective Date:</strong> March 30, 2027
         </p>
 
         <p>

@@ -173,13 +173,6 @@ const RealEstateHero = ({ handleScrollToForm }) => {
         <>
             <Box
                 sx={{
-                    backgroundImage: {
-                        xs: "url('/images/bg5.png')",
-                        md: "url('/images/bg1.png')",
-                    },
-                    backgroundSize: { xs: 'cover', md: 'cover' },
-                    backgroundPosition: { xs: 'top center', md: 'center' },
-                    backgroundRepeat: 'no-repeat',
                     minHeight: '82vh',
                     display: 'flex',
                     flexDirection: 'column',
@@ -190,20 +183,21 @@ const RealEstateHero = ({ handleScrollToForm }) => {
                     position: 'relative',
                     overflow: 'hidden',
                     borderBottom: '1px solid #E2E8F0',
+                    backgroundColor: '#eef4fb',
                 }}
             >
-            <Box
-                sx={{
-                    display: 'flex',
-                    flexDirection: isMobile ? 'column' : 'row',
-                    alignItems: { xs: 'flex-start', md: 'center' },
-                    justifyContent: 'center',
-                    maxWidth: '1240px',
-                    width: '100%',
-                    gap: { xs: 4, md: 5 },
-                    px: { xs: 0, sm: 0 },
-                }}
-            >
+                <Box
+                    sx={{
+                        display: 'flex',
+                        flexDirection: isMobile ? 'column' : 'row',
+                        alignItems: { xs: 'flex-start', md: 'center' },
+                        justifyContent: 'center',
+                        maxWidth: '1240px',
+                        width: '100%',
+                        gap: { xs: 4, md: 5 },
+                        px: { xs: 0, sm: 0 },
+                    }}
+                >
                 {/* Left Content */}
                 <Box
                     sx={{
@@ -228,9 +222,9 @@ const RealEstateHero = ({ handleScrollToForm }) => {
     initial="hidden"
     animate={inView ? 'visible' : 'hidden'}
     style={{
-    position: isMobile ? 'absolute' : 'relative',
-    top: isMobile ? -190 : 'auto',
-    left: isMobile ? 0 : 'auto',
+    position: 'relative',
+    top: 'auto',
+    left: 'auto',
     width: isMobile ? 'auto' : '100%',
     display: 'flex',
     justifyContent: 'flex-start',
@@ -289,10 +283,9 @@ const RealEstateHero = ({ handleScrollToForm }) => {
                                 fontSize: isMobile ? '1.9rem' : '2.8rem',
                                 color: '#0F172A',
                                 lineHeight: 1.18,
-                                position: isMobile ? 'absolute' : 'relative',
-                                top: isMobile ? -135 : 'auto',
-                                left: isMobile ? 0 : 'auto',
-                                width: isMobile ? '60%' : '100%',
+                                position: 'relative',
+                                top: { xs: 0, md: -5 },
+                                width: '100%',
                                 letterSpacing: '-0.02em',
                                 mb: 0.5,
                             }}
@@ -316,7 +309,7 @@ const RealEstateHero = ({ handleScrollToForm }) => {
                         initial="hidden"
                         animate={inView ? 'visible' : 'hidden'}
                         transition={{ delay: 0.2, duration: 1 }}
-                        style={{ display: isMobile ? 'none' : 'block' }}
+                        style={{ display: 'block' }}
                     >
                         <Typography
                             sx={{
@@ -333,7 +326,7 @@ const RealEstateHero = ({ handleScrollToForm }) => {
                     {/* 6 Features Interactive Animated Carousel Transition */}
                     <Box
                         sx={{
-                            display: { xs: 'none', md: 'block' },
+                            display: 'block',
                             position: 'relative',
                             minHeight: '80px',
                             my: 0.5,
@@ -398,30 +391,34 @@ const RealEstateHero = ({ handleScrollToForm }) => {
                    
 
                     {/* Interactive 6 Pillars Bar: Lead Management • Follow-ups • Inventory • WhatsApp • Team Management • Reports */}
-                    {!isMobile && (
-                        <Box
-                            sx={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: 1.5,
-                                mt: 1.5,
-                                flexWrap: 'wrap',
-                            }}
-                        >
-                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.8, flexWrap: 'wrap' }}>
+                    <Box
+                        sx={{
+                            display: { xs: 'none', md: 'flex' },
+                            alignItems: 'center',
+                            gap: 1.5,
+                            mt: 1.5,
+                            flexWrap: { xs: 'nowrap', md: 'wrap' },
+                            overflowX: { xs: 'auto', md: 'visible' },
+                            pb: { xs: 0.5, md: 0 },
+                            width: '100%',
+                        }}
+                    >
+                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.8, flexWrap: 'nowrap' }}>
                                 {realEstatePillars.map((item, index) => (
                                     <Box
                                         key={index}
                                         onClick={() => handleDotClick(index)}
                                         sx={{
-                                            px: 1.3,
-                                            py: 0.5,
+                                            px: { xs: 0.9, md: 1.3 },
+                                            py: { xs: 0.5, md: 0.5 },
                                             borderRadius: '10px',
                                             cursor: 'pointer',
                                             bgcolor: index === activeStep ? item.accent : '#F1F5F9',
                                             color: index === activeStep ? '#ffffff' : '#475569',
-                                            fontSize: '0.74rem',
+                                            fontSize: { xs: '0.68rem', md: '0.74rem' },
                                             fontWeight: index === activeStep ? 700 : 500,
+                                            whiteSpace: 'nowrap',
+                                            flexShrink: 0,
                                             transition: 'all 0.25s ease',
                                             boxShadow: index === activeStep ? `0 2px 8px ${item.accent}40` : 'none',
                                             '&:hover': {
@@ -432,9 +429,8 @@ const RealEstateHero = ({ handleScrollToForm }) => {
                                         {item.label}
                                     </Box>
                                 ))}
-                            </Box>
                         </Box>
-                    )}
+                    </Box>
                           
                            {/* Button: [Book a Free Demo] */}
                     <motion.div
@@ -458,9 +454,9 @@ const RealEstateHero = ({ handleScrollToForm }) => {
                                 fontSize: isMobile ? '0.9rem' : '1.05rem',
                                 borderRadius: 3,
                                 mt: 1,
-                                position: isMobile ? 'absolute' : 'relative',
-                                top: isMobile ? 80 : 'auto',
-                                left: isMobile ? 0 : 'auto',
+                                position: 'relative',
+                                top: 'auto',
+                                left: 'auto',
                                 width: isMobile ? 'auto' : '41%',
                                 boxShadow: '0 6px 20px rgba(22, 119, 247, 0.3)',
                                 
@@ -509,26 +505,53 @@ const RealEstateHero = ({ handleScrollToForm }) => {
                 <Box
                     sx={{
                         flex: 1,
-                        display: { xs: 'none', md: 'flex' },
-                        justifyContent: 'center',
+                        width: { xs: '100%', md: 'auto' },
+                        display: 'flex',
+                        justifyContent: 'flex-start',
                         position: 'relative',
                         overflow: 'visible',
-                        mt: { xs: 2, md: 0 },
+                        mt: { xs: 6, md: 0 },
+                        pr: { md: 1 },
                     }}
                 >
-                    {/* Main Image */}
                     <Box
-                        
-                        alt="Acolead Real Estate CRM"
                         sx={{
+                            position: 'relative',
                             width: '100%',
-                            maxWidth: 500,
-                            height: 'auto',
-                            borderRadius: 4,
+                            left: { xs: -10, md: -520 },
+                            top: { xs: -50, md: -100 },
                             zIndex: 1,
-                            boxShadow: '0 20px 50px rgba(0,0,0,0.1)',
+                            maxHeight: { xs: 600, md: 500 },
+                            maxWidth: 550,
+                            aspectRatio: '2000 / 800',
+                            overflow: 'visible',
                         }}
-                    />
+                    >
+                        <video
+                            ref={(el) => {
+                                if (el) {
+                                    el.muted = true;
+                                    el.playsInline = true;
+                                    el.play().catch(() => {});
+                                }
+                            }}
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            preload="auto"
+                           
+                            style={{
+                                display: 'block',
+                                width: isMobile ? '100%' : '300%',
+                                height: isMobile ? '200%' : '300%',
+                                objectFit: 'contain',
+                            }}
+                        >
+                            <source src="/images/bg1.mp4" type="video/mp4" />
+                            <source src="/images/bg1.webm" type="video/webm" />
+                        </video>
+                    </Box>
 
                     {!isMobile && (
                         <>
