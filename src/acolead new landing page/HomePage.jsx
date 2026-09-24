@@ -179,6 +179,11 @@ const HomePage = ({ handleScrollToForm }) => {
                         variants={slideInVariant}
                         initial="hidden"
                         animate={inView ? 'visible' : 'hidden'}
+                        style={{
+                            minHeight: isMobile ? '105px' : '165px',
+                            display: 'flex',
+                            alignItems: 'flex-start',
+                        }}
                     >
                         <Typography
                             variant="h4"
@@ -194,7 +199,7 @@ const HomePage = ({ handleScrollToForm }) => {
                         </Typography>
                     </motion.div>
 
-                    <Box sx={{ position: 'relative', minHeight: isMobile ? '80px' : '100px' }}>
+                    <Box sx={{ position: 'relative', minHeight: isMobile ? '105px' : '110px' }}>
                         <AnimatePresence mode="wait" custom={direction}>
                             <motion.div
                                 key={activeStep}
