@@ -9,7 +9,6 @@ import Mission from './Mission';
 import KeyFeatures from './KeyFeatures';
 import HorizontalBar from './HorizontalBar';
 import BlogSection from './BlogSection';
-import Plans from './Plans';
 import BookDemo from './BookDemo';
 import Footer from './Footer';
 // import ProductModules from '../new components/acolead-modules/ProductModules';
