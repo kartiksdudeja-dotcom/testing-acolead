@@ -15,10 +15,12 @@ import {
 import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 import WarningIcon from '@mui/icons-material/Warning'
 import { useFormik } from 'formik'
+import { useNavigate } from 'react-router-dom'
 import * as Yup from 'yup'
 import DemoIcon from './icons/DemoIcon'
 
 const Contact = forwardRef((props, ref) => {
+    const navigate = useNavigate()
     const theme = useTheme()
     const isMobile = useMediaQuery(theme.breakpoints.down('md'))
     const buttonRef = useRef()

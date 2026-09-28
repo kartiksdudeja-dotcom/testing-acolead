@@ -76,6 +76,26 @@ const realClientLogos = [
     logoSrc: process.env.PUBLIC_URL + '/Client Logos/whitecollar.png',
     alt: 'White Collar Realty Logo',
   },
+  {
+    id: 13,
+    name: 'Shri Gurukeshav',
+    logoSrc: process.env.PUBLIC_URL + '/Client Logos/Shri_Gurukeshav _Logo (2).jpg',
+    alt: 'Shri Gurukeshav Logo',
+    bigLogo: true,
+  },
+  {
+    id: 14,
+    name: 'New Client 1',
+    logoSrc: process.env.PUBLIC_URL + '/Client Logos/WhatsApp Image 2026-09-18 at 5.45.21 PM (1).jpeg',
+    alt: 'New client logo',
+  },
+  {
+    id: 15,
+    name: 'New Client 2',
+    logoSrc: process.env.PUBLIC_URL + '/Client Logos/WhatsApp Image 2026-09-28 at 6.57.51 PM.jpeg',
+    alt: 'New client logo',
+    bigLogo: true,
+  },
 ];
 
 const ClientLogosMarquee = () => {

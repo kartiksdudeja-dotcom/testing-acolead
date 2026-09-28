@@ -25,6 +25,7 @@ const LayoutNew = () => {
     const formRef = useRef(null);
     const formSectionRef = useRef(null);
     const location = useLocation();
+    const navigate = useNavigate();
 
     const handleScrollToForm = useCallback(() => {
         if (location.pathname !== '/request-a-demo') {
