@@ -11,6 +11,7 @@ import KeyFeaturesNew from "./KeyFeaturesNew";
 import IntegrationPage from "./IntegrationPage";
 import { Element } from "react-scroll";
 import Security from "./Security";
+import MapPage from "./map";
 const LayoutNew = () => {
   const [selectedCountry, setSelectedCountry] = useState("IN");
   const [anchorEl, setAnchorEl] = useState(null);
@@ -40,6 +41,7 @@ const LayoutNew = () => {
         anchorEl={anchorEl}
       />
       <Box display="flex" flexDirection="column" flex={1}>
+        <MapPage />
         {/* <KeyFeatures/> */}
         <KeyFeaturesNew />
         <CenterScreen />

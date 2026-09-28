@@ -18,8 +18,21 @@ const KeyFeaturesNew = () => {
       <Box position="absolute" top={0} right={0}>
         <Key />
       </Box>
-      <Typography variant="h4" align="center" color="white" sx={{ fontWeight:700}}>
-        Key Features
+      <Typography
+        variant="h2"
+        align="center"
+        sx={{
+          fontWeight: 800,
+          letterSpacing: '-0.06em',
+          lineHeight: 1,
+          color: '#0F172A',
+          fontSize: { xs: '2.4rem', md: '4rem' },
+        }}
+      >
+        Key{' '}
+        <Box component="span" sx={{ color: '#1677F7' }}>
+          Features
+        </Box>
       </Typography>
       <Box display="flex" justifyContent="center">
         <Grid container justifyContent="center" maxWidth="lg">
