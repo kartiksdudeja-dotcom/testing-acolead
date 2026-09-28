@@ -174,18 +174,27 @@ const ClientLogosMarquee = () => {
           }
 
           /* Bigger logos for images with extra whitespace */
-          .real-client-logo-img.big-logo,
-          .real-client-logo-img.mittal-logo {
-            max-height: 100px;
-            max-width: 100%;
+          .real-client-logo-img.big-logo {
+            max-height: 150px;
+            max-width: 280px;
+          }
+
+          .real-client-logo-img.shri-gurukeshav-logo {
+            max-height: 80px;
+            max-width: 190px;
           }
 
           @media (max-width: 600px) {
-            .real-client-logo-img.big-logo,
-            .real-client-logo-img.mittal-logo {
-              max-height: 76px;
+            .real-client-logo-img.shri-gurukeshav-logo {
+              max-height: 80px;
+              max-width: 190px;
             }
           }
+
+            .real-client-logo-img.mittal-logo {
+            max-height: 260px;
+            max-width: 370px;
+}
         `}
       </style>
 
@@ -303,7 +312,7 @@ const ClientLogosMarquee = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 px: 4,
-                py: { xs: 1, sm: 1.5 },
+                py: 2.5,
                 mx: 2,
                 borderRadius: '18px',
                 backgroundColor: '#FFFFFF',
@@ -317,7 +326,7 @@ const ClientLogosMarquee = () => {
               <img
                 src={client.logoSrc}
                 alt={client.alt}
-                className={`real-client-logo-img${client.bigLogo ? ' big-logo' : ''}${client.id === 6 ? ' mittal-logo' : ''}`}
+                className={`real-client-logo-img${client.bigLogo ? ' big-logo' : ''}${client.id === 6 ? ' mittal-logo' : ''}${client.id === 13 ? ' shri-gurukeshav-logo' : ''}`}
                 loading="lazy"
                 onError={(e) => {
                   // Fallback to text if an image fails to load

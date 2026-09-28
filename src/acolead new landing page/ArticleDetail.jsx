@@ -1034,7 +1034,7 @@ const ArticleDetail = () => {
       <Box display="flex" flexDirection="column" minHeight="100vh">
         <Header
           scrollToSection={(section) => navigate(`/?section=${section}`)}
-          handleScrollToForm={() => navigate('/?demo=true')}
+          handleScrollToForm={() => navigate('/request-a-demo')}
           country={country}
           setCountry={setCountry}
         />
@@ -1067,7 +1067,7 @@ const ArticleDetail = () => {
       {/* Global Header */}
       <Header
         scrollToSection={(section) => navigate(`/?section=${section}`)}
-        handleScrollToForm={() => navigate('/?demo=true')}
+        handleScrollToForm={() => navigate('/request-a-demo')}
         country={country}
         setCountry={setCountry}
       />
@@ -1238,7 +1238,7 @@ const ArticleDetail = () => {
                 <RelatedInsights postRelatedPosts={post?.relatedPosts} currentPostId={post?.id} />
 
                 {/* Call to Action Box */}
-                <CtaBox onBookDemo={() => navigate('/?demo=true')} />
+                <CtaBox onBookDemo={() => navigate('/request-a-demo')} />
               </Box>
             </Grid>
           </Grid>

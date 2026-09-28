@@ -46,7 +46,7 @@ const InstagramPage = () => {
   };
 
   const handleScrollToForm = () => {
-    navigate("/?demo=true");
+    navigate("/request-a-demo");
   };
 
   const howItWorks = [
@@ -249,7 +249,7 @@ const InstagramPage = () => {
             endIcon={<ArrowForwardIcon />}
             onClick={() => {
               setDrawerOpen(false);
-              navigate('/?demo=true');
+              navigate('/request-a-demo');
             }}
             sx={{
               bgcolor: '#1677F7',
@@ -556,7 +556,7 @@ const InstagramPage = () => {
             <Button
               variant="contained"
               endIcon={<ArrowForwardIcon />}
-              onClick={() => navigate('/?demo=true')}
+              onClick={() => navigate('/request-a-demo')}
               sx={{
                 bgcolor: '#fff', color: '#1677F7', px: 4, py: 1.4, borderRadius: '999px', textTransform: 'none', fontWeight: 700, fontSize: { xs: 14, md: 16 },
                 whiteSpace: 'nowrap',

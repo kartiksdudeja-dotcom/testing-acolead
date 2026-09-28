@@ -32,7 +32,7 @@ const AICallingPage = () => {
   };
 
   const handleScrollToForm = () => {
-    navigate("/?demo=true");
+    navigate("/request-a-demo");
   };
 
 
@@ -43,7 +43,7 @@ const AICallingPage = () => {
   };
 
   const handleBookDemoClick = () => {
-    navigate("/?demo=true");
+    navigate("/request-a-demo");
   };
 
   const workflow = [
@@ -218,7 +218,7 @@ const AICallingPage = () => {
             endIcon={<ArrowForwardIcon />}
             onClick={() => {
               setDrawerOpen(false);
-              navigate('/?demo=true');
+              navigate('/request-a-demo');
             }}
             sx={{
               bgcolor: '#1677F7',

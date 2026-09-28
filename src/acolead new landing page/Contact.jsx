@@ -1,5 +1,6 @@
 import React, { forwardRef, useImperativeHandle, useRef, useState } from 'react'
 import {
+    Alert,
     Box,
     TextField,
     MenuItem,
@@ -25,6 +26,7 @@ const Contact = forwardRef((props, ref) => {
     const isMobile = useMediaQuery(theme.breakpoints.down('md'))
     const buttonRef = useRef()
     const [isFormSubmitted, setIsFormSubmitted] = useState(false)
+    const [submitError, setSubmitError] = useState('')
 
     const firstFieldRef = useRef();
 
@@ -62,6 +64,7 @@ const Contact = forwardRef((props, ref) => {
         },
         validationSchema,
         onSubmit: async (values, { resetForm }) => {
+            setSubmitError('')
             try {
                 const payload = {
                     ...values,
@@ -76,15 +79,20 @@ const Contact = forwardRef((props, ref) => {
                     payload.companyName
                 )
 
-                console.log('result:', result)
                 if (!result.code) {
                     resetForm()
                     setIsFormSubmitted(true)
-                    navigate('/request-a-demo?submitted=true')
+                    navigate('/request-a-demo/thank-you')
                 } else {
-                    console.error('API call failed')
+                    setSubmitError('We could not submit your request. Please try again shortly.')
+                    console.error('AcoLead enquiry failed:', {
+                        status: result.response?.status,
+                        response: result.response?.data,
+                        code: result.code,
+                    })
                 }
             } catch (error) {
+                setSubmitError('We could not submit your request. Please try again shortly.')
                 console.error('Error during API call:', error)
             }
         },
@@ -197,6 +205,11 @@ const Contact = forwardRef((props, ref) => {
                     </Box>
 
                     <form onSubmit={formik.handleSubmit}>
+                        {submitError && (
+                            <Alert severity="error" sx={{ mx: 3, mb: 2 }}>
+                                {submitError}
+                            </Alert>
+                        )}
                         <Box
                             sx={{
                                 display: 'flex',

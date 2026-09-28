@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Box, Button, Container, Typography } from '@mui/material';
 import Header from './Header';
@@ -28,7 +28,12 @@ const LayoutNew = () => {
     const location = useLocation();
     const navigate = useNavigate();
 
-    const handleScrollToForm = () => {
+    const handleScrollToForm = useCallback(() => {
+        if (location.pathname !== '/request-a-demo') {
+            navigate('/request-a-demo');
+            return;
+        }
+
         if (formSectionRef.current) {
             const top =
                 formSectionRef.current.getBoundingClientRect().top +
@@ -44,17 +49,15 @@ const LayoutNew = () => {
                 formRef.current?.focusFirstField?.();
             }, 600);
         }
-    };
+    }, [location.pathname, navigate]);
 
     useEffect(() => {
-        const params = new URLSearchParams(location.search);
-
-        if (params.get('demo') === 'true') {
+        if (location.pathname === '/request-a-demo') {
             setTimeout(() => {
                 handleScrollToForm();
             }, 300);
         }
-    }, [location.search]);
+    }, [handleScrollToForm, location.pathname]);
 
     useEffect(() => {
         const params = new URLSearchParams(location.search);
@@ -82,7 +85,7 @@ const LayoutNew = () => {
         }
     }, [location.search]);
 
-    if (location.pathname === '/request-a-demo' && new URLSearchParams(location.search).get('submitted') === 'true') {
+    if (location.pathname === '/request-a-demo/thank-you') {
         return (
             <Box sx={{ minHeight: '100vh', display: 'flex', alignItems: 'center', textAlign: 'center', bgcolor: '#F8FAFC' }}>
                 <Container maxWidth="sm">

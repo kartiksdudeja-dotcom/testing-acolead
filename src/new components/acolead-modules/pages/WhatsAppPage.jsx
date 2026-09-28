@@ -31,14 +31,14 @@ const WhatsAppPage = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const handleScrollToForm = () => {
-    navigate("/?demo=true");
+    navigate("/request-a-demo");
   };
 
 
   const toggleDrawer = () => setDrawerOpen((prev) => !prev);
 
   const handleBookDemoClick = () => {
-    navigate("/?demo=true");
+    navigate("/request-a-demo");
   };
 
   const productName = "WHATSAPP";
@@ -236,7 +236,7 @@ const WhatsAppPage = () => {
             endIcon={<ArrowForwardIcon />}
             onClick={() => {
               setDrawerOpen(false);
-              navigate('/?demo=true');
+              navigate('/request-a-demo');
             }}
             sx={{
               bgcolor: '#1677F7',
