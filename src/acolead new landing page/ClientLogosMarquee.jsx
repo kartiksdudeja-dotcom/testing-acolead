@@ -76,26 +76,6 @@ const realClientLogos = [
     logoSrc: process.env.PUBLIC_URL + '/Client Logos/whitecollar.png',
     alt: 'White Collar Realty Logo',
   },
-  {
-    id: 13,
-    name: 'Shri Gurukeshav',
-    logoSrc: process.env.PUBLIC_URL + '/Client Logos/Shri_Gurukeshav _Logo (2).jpg',
-    alt: 'Shri Gurukeshav Logo',
-    bigLogo: true,
-  },
-  {
-    id: 14,
-    name: 'New Client 1',
-    logoSrc: process.env.PUBLIC_URL + '/Client Logos/WhatsApp Image 2026-09-18 at 5.45.21 PM (1).jpeg',
-    alt: 'New client logo',
-  },
-  {
-    id: 15,
-    name: 'New Client 2',
-    logoSrc: process.env.PUBLIC_URL + '/Client Logos/WhatsApp Image 2026-09-28 at 6.57.51 PM.jpeg',
-    alt: 'New client logo',
-    bigLogo: true,
-  },
 ];
 
 const ClientLogosMarquee = () => {
@@ -174,18 +154,14 @@ const ClientLogosMarquee = () => {
           }
 
           /* Bigger logos for images with extra whitespace */
-          .real-client-logo-img.big-logo,
-          .real-client-logo-img.mittal-logo {
-            max-height: 100px;
-            max-width: 100%;
+          .real-client-logo-img.big-logo {
+            max-height: 150px;
+            max-width: 280px;
           }
-
-          @media (max-width: 600px) {
-            .real-client-logo-img.big-logo,
             .real-client-logo-img.mittal-logo {
-              max-height: 76px;
-            }
-          }
+            max-height: 260px;
+            max-width: 370px;
+}
         `}
       </style>
 
@@ -303,7 +279,7 @@ const ClientLogosMarquee = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 px: 4,
-                py: { xs: 1, sm: 1.5 },
+                py: 2.5,
                 mx: 2,
                 borderRadius: '18px',
                 backgroundColor: '#FFFFFF',
