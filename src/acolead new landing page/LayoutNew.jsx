@@ -14,6 +14,7 @@ import BookDemo from './BookDemo';
 import Footer from './Footer';
 // import ProductModules from '../new components/acolead-modules/ProductModules';
 import ClientLogosMarquee from './ClientLogosMarquee';
+import MapPage from '../new components/map';
 
 const LayoutNew = () => {
     const aboutRef = useRef(null);
@@ -128,6 +129,8 @@ const LayoutNew = () => {
             */}
 
             <Mission />
+
+            <MapPage />
 
             <Box ref={featuesRef}>
                 <KeyFeatures />

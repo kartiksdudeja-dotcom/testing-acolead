@@ -39,6 +39,7 @@ import Signup from '../new components/acolead-modules/SignUp';
 import WhatsAppPage from '../new components/acolead-modules/pages/WhatsAppPage';
 // import InstagramPage from '../new components/acolead-modules/pages/InstagramPage';
 import AICallingPage from '../new components/acolead-modules/pages/AICallingPage';
+import MapPage from '../new components/map';
 
 const AppRoutesNew = () => {
     const location = useLocation();
@@ -78,6 +79,7 @@ const AppRoutesNew = () => {
                         <Route path="/services" element={< AcoSign />} />
                         <Route path="/privacy" element={<Privacy />} />
                         <Route path="/terms-conditions" element={<Terms />} />
+                        <Route path="/map" element={<MapPage />} />
 
                         <Route path="/privacy-policy" element={<PrivacyAcolead />} />
                         <Route path="/terms-of-use" element={<TermsofUse />} />
