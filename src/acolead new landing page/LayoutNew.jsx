@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { Box, Button, Container, Typography } from '@mui/material';
+import { useLocation } from 'react-router-dom';
+import { Box } from '@mui/material';
 import Header from './Header';
 import RealEstateHero from './RealEstateHero';
 import HomePage from './HomePage';
@@ -26,7 +26,6 @@ const LayoutNew = () => {
     const formRef = useRef(null);
     const formSectionRef = useRef(null);
     const location = useLocation();
-    const navigate = useNavigate();
 
     const handleScrollToForm = () => {
         if (formSectionRef.current) {
@@ -81,22 +80,6 @@ const LayoutNew = () => {
             window.scrollTo(0, 0);
         }
     }, [location.search]);
-
-    if (location.pathname === '/request-a-demo' && new URLSearchParams(location.search).get('submitted') === 'true') {
-        return (
-            <Box sx={{ minHeight: '100vh', display: 'flex', alignItems: 'center', textAlign: 'center', bgcolor: '#F8FAFC' }}>
-                <Container maxWidth="sm">
-                    <Typography variant="h3" sx={{ fontWeight: 800, color: '#0F172A', mb: 2 }}>
-                        Thank you for your request
-                    </Typography>
-                    <Typography variant="body1" sx={{ color: '#475569', mb: 4 }}>
-                        Your demo request has been received. Our team will get back to you within 12 hours.
-                    </Typography>
-                    <Button variant="contained" onClick={() => navigate('/')}>Back to AcoLead</Button>
-                </Container>
-            </Box>
-        );
-    }
 
     return (
         <Box display="flex" flexDirection="column" minHeight="100vh">

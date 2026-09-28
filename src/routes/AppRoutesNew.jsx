@@ -73,7 +73,6 @@ const AppRoutesNew = () => {
                     <Routes location={location}>
                         {/* <Route path="" element={<MainLayout />} /> */}
                         {/* <Route path="" element={<LayoutNew />} /> */}
-                        <Route path="/request-a-demo" element={<LayoutNew />} />
                         <Route path="" element={< LayoutNew />} />
                         <Route path="/insights/:slug" element={<ArticleDetail />} />
                         <Route path="/acoSign" element={<AcoSign />} />

@@ -15,12 +15,10 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 import WarningIcon from '@mui/icons-material/Warning'
 import ScheduleIcon from '@mui/icons-material/Schedule'
 import { useFormik } from 'formik'
-import { useNavigate } from 'react-router-dom'
 import * as Yup from 'yup'
 import DemoIcon from './icons/DemoIcon'
 
 const Contact = forwardRef((props, ref) => {
-    const navigate = useNavigate()
     const theme = useTheme()
     const isMobile = useMediaQuery(theme.breakpoints.down('md'))
     const buttonRef = useRef()
@@ -80,7 +78,6 @@ const Contact = forwardRef((props, ref) => {
                 if (!result.code) {
                     resetForm()
                     setIsFormSubmitted(true)
-                    navigate('/request-a-demo?submitted=true')
                 } else {
                     console.error('API call failed')
                 }
@@ -192,7 +189,7 @@ const Contact = forwardRef((props, ref) => {
                                 fontWeight: 600,
                             }}
                         >
-                            Request a Demo
+                            Schedule Demo
                         </Typography>
                     </Box>
 

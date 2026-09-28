@@ -9,8 +9,6 @@ const servedStates = [
   { id: 'wb', name: 'West Bengal', city: 'Kolkata' },
   { id: 'gj', name: 'Gujarat', city: 'Ahmedabad' },
   { id: 'ka', name: 'Karnataka', city: 'Bengaluru' },
-  { id: 'ct', name: 'Chhattisgarh', city: 'Raipur' },
-  { id: 'rj', name: 'Rajasthan', city: 'Jaipur' },
 ];
 
 const HomePage = () => {
@@ -115,7 +113,7 @@ const HomePage = () => {
             <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '70%', height: '70%', borderRadius: '50%', background: 'radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, transparent 70%)', pointerEvents: 'none' }} />
 
             <Box sx={{ position: 'absolute', right: 20, top: 18, px: 1.8, py: 0.8, borderRadius: 2, background: '#FFFFFF', border: '1px solid rgba(37, 99, 235, 0.15)', boxShadow: '0 4px 12px rgba(15, 23, 42, 0.05)', zIndex: 2 }}>
-              <Typography sx={{ color: '#2563EB', fontSize: '0.65rem', fontWeight: 800, letterSpacing: '0.06em', textTransform: 'uppercase' }}>7 States</Typography>
+              <Typography sx={{ color: '#2563EB', fontSize: '0.65rem', fontWeight: 800, letterSpacing: '0.06em', textTransform: 'uppercase' }}>5 States</Typography>
             </Box>
 
             <Box sx={{ position: 'absolute', inset: { xs: '3% 10%', md: '2% 18%' }, zIndex: 1 }}>
