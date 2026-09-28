@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useRef, useMemo } from 'react';
+import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import { Box, Typography, Button, useMediaQuery, useTheme, MobileStepper } from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import bg from './images/bg.png';
-import bg2 from './images/bg2.png';
 import mainimg from './images/mainimg.png';
 import calender from './images/calender.png';
 import card from './images/card.png';
@@ -12,14 +11,27 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { leadCaputureAddon } from '../new components/acolead-modules/license.types';
 import { PRODUCT_OPTIONS } from '../new components/acolead-modules/constants';
-import { useNavigate } from 'react-router-dom';
 
 const HomePage = ({ handleScrollToForm }) => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-    const navigate = useNavigate();
-
-    const selectableProducts = useMemo(() => PRODUCT_OPTIONS.filter((p) => p.selectable), []);
+    const carouselSlides = useMemo(() => [
+        ...PRODUCT_OPTIONS.filter((product) => product.selectable),
+        {
+            id: leadCaputureAddon.WEBSITE,
+            label: 'Website Builder',
+            accent: '#20B8C8',
+            mainPageHeading: (
+                <>
+                    Your Properties.{' '}
+                    <Box component="span" sx={{ color: '#1677F7' }}>Your Website.</Box>{' '}
+                    Zero Maintenance.
+                </>
+            ),
+            mainPageDescription: 'Build your real estate website, showcase your listings, and turn visitors into enquiries—all with AcoLead, without the hassle of website maintenance.',
+            isWebsiteBuilder: true,
+        },
+    ], []);
 
     const [activeStep, setActiveStep] = useState(0);
     const [direction, setDirection] = useState(0);
@@ -66,75 +78,51 @@ const HomePage = ({ handleScrollToForm }) => {
         }),
     };
 
-    // Auto-play functionality
+    const stopAutoPlay = useCallback(() => {
+        if (autoPlayTimer.current !== null) {
+            window.clearInterval(autoPlayTimer.current);
+            autoPlayTimer.current = null;
+        }
+    }, []);
+
+    const startAutoPlay = useCallback(() => {
+        stopAutoPlay();
+        if (carouselSlides.length < 2) return;
+
+        autoPlayTimer.current = window.setInterval(() => {
+            setDirection(1);
+            setActiveStep((prev) => (prev + 1) % carouselSlides.length);
+        }, 5000);
+    }, [carouselSlides.length, stopAutoPlay]);
+
     useEffect(() => {
-        if (selectableProducts.length > 1) {
-            autoPlayTimer.current = setInterval(() => {
-                setDirection(1);
-                setActiveStep((prev) => (prev + 1) % selectableProducts.length);
-            }, 5000);
-        }
+        startAutoPlay();
+        return stopAutoPlay;
+    }, [startAutoPlay, stopAutoPlay]);
 
-        return () => clearInterval(autoPlayTimer.current);
-    }, [selectableProducts.length]);
-
-    // Pause auto-play on hover
-    const handleMouseEnter = () => {
-        clearInterval(autoPlayTimer.current);
-    };
-
-    const handleMouseLeave = () => {
-        if (selectableProducts.length > 1) {
-            autoPlayTimer.current = setInterval(() => {
-                setDirection(1);
-                setActiveStep((prev) => (prev + 1) % selectableProducts.length);
-            }, 5000);
-        }
-    };
+    const handleMouseEnter = stopAutoPlay;
+    const handleMouseLeave = startAutoPlay;
 
     const handleNext = () => {
         setDirection(1);
-        setActiveStep((prev) => (prev + 1) % selectableProducts.length);
+        setActiveStep((prev) => (prev + 1) % carouselSlides.length);
         // Reset auto-play timer on manual interaction
-        clearInterval(autoPlayTimer.current);
-        if (selectableProducts.length > 1) {
-            autoPlayTimer.current = setInterval(() => {
-                setDirection(1);
-                setActiveStep((prev) => (prev + 1) % selectableProducts.length);
-            }, 5000);
-        }
+        startAutoPlay();
     };
 
     const handleBack = () => {
         setDirection(-1);
-        setActiveStep((prev) => (prev - 1 + selectableProducts.length) % selectableProducts.length);
-        clearInterval(autoPlayTimer.current);
-        if (selectableProducts.length > 1) {
-            autoPlayTimer.current = setInterval(() => {
-                setDirection(1);
-                setActiveStep((prev) => (prev + 1) % selectableProducts.length);
-            }, 5000);
-        }
+        setActiveStep((prev) => (prev - 1 + carouselSlides.length) % carouselSlides.length);
+        startAutoPlay();
     };
 
     const handleDotClick = (index) => {
         setDirection(index > activeStep ? 1 : -1);
         setActiveStep(index);
-        clearInterval(autoPlayTimer.current);
-        if (selectableProducts.length > 1) {
-            autoPlayTimer.current = setInterval(() => {
-                setDirection(1);
-                setActiveStep((prev) => (prev + 1) % selectableProducts.length);
-            }, 5000);
-        }
+        startAutoPlay();
     };
 
-    const featureContent = selectableProducts[activeStep];
-
-    const onClickGetStarted = () => {
-        navigate(`/product/signup?product=${featureContent.id}`);
-    };
-
+    const featureContent = carouselSlides[activeStep];
     return (
         <Box
             sx={{
@@ -215,7 +203,8 @@ const HomePage = ({ handleScrollToForm }) => {
                                     sx={{
                                         fontSize: isMobile ? '0.85rem' : '0.95rem',
                                         lineHeight: 1.7,
-                                        color: '#444',
+                                        color: featureContent.isWebsiteBuilder ? '#334155' : '#444',
+                                        fontWeight: featureContent.isWebsiteBuilder ? 500 : undefined,
                                     }}
                                 >
                                     {featureContent.mainPageDescription}
@@ -275,11 +264,11 @@ const HomePage = ({ handleScrollToForm }) => {
                             }}
                             onClick={handleScrollToForm}
                         >
-                             BOOK A Demo 
+                            {featureContent.isWebsiteBuilder ? 'Build Your Website' : 'BOOK A Demo'}
                         </Button>
                     </motion.div>
 
-                    {!isMobile && selectableProducts.length > 1 && (
+                    {!isMobile && carouselSlides.length > 1 && (
                         <Box
                             sx={{
                                 display: 'flex',
@@ -319,7 +308,7 @@ const HomePage = ({ handleScrollToForm }) => {
                                     gap: 1,
                                 }}
                             >
-                                {selectableProducts.map((product, index) => (
+                                {carouselSlides.map((product, index) => (
                                     <Box
                                         key={index}
                                         onClick={() => handleDotClick(index)}
@@ -380,14 +369,14 @@ const HomePage = ({ handleScrollToForm }) => {
                                     ml: 0.5,
                                 }}
                             >
-                                {activeStep + 1}/{selectableProducts.length}
+                                {activeStep + 1}/{carouselSlides.length}
                             </Typography>
                         </Box>
                     )}
 
-                    {isMobile && selectableProducts.length > 1 && (
+                    {isMobile && carouselSlides.length > 1 && (
                         <MobileStepper
-                            steps={selectableProducts.length}
+                            steps={carouselSlides.length}
                             position="static"
                             activeStep={activeStep}
                             sx={{

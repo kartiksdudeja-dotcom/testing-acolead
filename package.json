@@ -15,8 +15,6 @@
     "@testing-library/user-event": "^13.5.0",
     "@xyflow/react": "^12.3.5",
     "axios": "^1.7.9",
-    "baseline-browser-mapping": "^2.11.26",
-    "caniuse-lite": "^1.0.30001813",
     "dinero.js": "^1.9.1",
     "formik": "^2.4.6",
     "framer-motion": "^11.18.2",

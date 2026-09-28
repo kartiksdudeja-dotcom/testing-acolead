@@ -8,18 +8,21 @@ const realClientLogos = [
     name: 'Desai Estate',
     logoSrc: process.env.PUBLIC_URL + '/Client Logos/Desai Estate.jpeg',
     alt: 'Desai Estate Real Estate Logo',
+    href: 'https://www.desaiestates.com/',
   },
   {
     id: 2,
     name: 'Direct Resale',
     logoSrc: process.env.PUBLIC_URL + '/Client Logos/Direct Resale.png',
     alt: 'Direct Resale Logo',
+    href: 'https://directresale.com/',
   },
   {
     id: 3,
     name: 'Global Consultancy',
     logoSrc: process.env.PUBLIC_URL + '/Client Logos/Globle consultancy.jpg',
     alt: 'Global Consultancy Logo',
+    href: 'https://globalcn.in/',
   },
   {
     id: 4,
@@ -33,12 +36,14 @@ const realClientLogos = [
     logoSrc: process.env.PUBLIC_URL + '/Client Logos/Kd Asset Builder.png',
     alt: 'KD Asset Builder Logo',
     bigLogo: true,
+    href: 'https://kdassetbuilder.com/',
   },
   {
     id: 6,
     name: 'Mittal Brothers',
     logoSrc: process.env.PUBLIC_URL + '/Client Logos/Mittal Brothers.png',
     alt: 'Mittal Brothers Logo',
+    href: 'https://www.mittalbrothers.com/',
   },
   {
     id: 7,
@@ -51,18 +56,21 @@ const realClientLogos = [
     name: 'PotterzWheel Realty',
     logoSrc: process.env.PUBLIC_URL + '/Client Logos/PotterzWheel Realty.jpeg',
     alt: 'PotterzWheel Realty Logo',
+    href: 'https://potterzwheelrealty.com/',
   },
   {
     id: 9,
     name: 'Pune Property Guide',
     logoSrc: process.env.PUBLIC_URL + '/Client Logos/Pune_Property_Guide__1_ (1).png',
     alt: 'Pune Property Guide Logo',
+    href: 'https://punepropertyguide.com/',
   },
   {
     id: 10,
     name: 'Sukran Realty',
     logoSrc: process.env.PUBLIC_URL + '/Client Logos/Sukran Realty.png',
     alt: 'Sukran Realty Logo',
+    href: 'https://sukrangroup.com/',
   },
   {
     id: 11,
@@ -82,18 +90,20 @@ const realClientLogos = [
     logoSrc: process.env.PUBLIC_URL + '/Client Logos/Shri_Gurukeshav _Logo (2).jpg',
     alt: 'Shri Gurukeshav Logo',
     bigLogo: true,
+    href: 'https://shrigurukeshavprojects.com/',
   },
   {
     id: 14,
-    name: 'New Client 1',
+    name: 'Jain Housing',
     logoSrc: process.env.PUBLIC_URL + '/Client Logos/WhatsApp Image 2026-09-18 at 5.45.21 PM (1).jpeg',
-    alt: 'New client logo',
+    alt: 'Jain Housing Logo',
+    href: 'https://jainhousing.com/',
   },
   {
     id: 15,
-    name: 'New Client 2',
+    name: 'Maharshi Group',
     logoSrc: process.env.PUBLIC_URL + '/Client Logos/WhatsApp Image 2026-09-28 at 6.57.51 PM.jpeg',
-    alt: 'New client logo',
+    alt: 'Maharshi Group Logo',
     bigLogo: true,
   },
 ];
@@ -247,7 +257,7 @@ const ClientLogosMarquee = () => {
             mb: 1,
           }}
         >
-          Trusted by Real Estate Businesses
+          "Trusted by Real Estate Businesses"
         </Typography>
 
         <Typography
@@ -307,6 +317,11 @@ const ClientLogosMarquee = () => {
             <Box
               key={`${client.id}-${index}`}
               className="real-client-logo-card"
+              component={client.href ? 'a' : 'div'}
+              href={client.href}
+              target={client.href ? '_blank' : undefined}
+              rel={client.href ? 'noopener noreferrer' : undefined}
+              aria-label={client.href ? `Visit ${client.name} website` : undefined}
               sx={{
                 display: 'flex',
                 alignItems: 'center',
@@ -321,6 +336,8 @@ const ClientLogosMarquee = () => {
                 height: { xs: '110px', sm: '130px' },
                 boxShadow: '0 2px 10px rgba(0, 0, 0, 0.03)',
                 userSelect: 'none',
+                cursor: client.href ? 'pointer' : 'default',
+                textDecoration: 'none',
               }}
             >
               <img
