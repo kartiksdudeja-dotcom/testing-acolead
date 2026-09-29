@@ -3,7 +3,6 @@ import { Box, Typography, Button, useMediaQuery, useTheme, MobileStepper } from 
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import bg from './images/bg.png';
-import mainimg from './images/mainimg.png';
 import calender from './images/calender.png';
 import card from './images/card.png';
 import sales from './images/sales.png';
@@ -445,79 +444,32 @@ const HomePage = ({ handleScrollToForm }) => {
                         overflow: 'visible',
                     }}
                 >
-                    {/* Main Image */}
                     <Box
-                        component="img"
-                        src={mainimg}
-                        alt="Main"
+                        component="video"
+                        src="/AcoLead%20Instagram%20Lead%20Gen%20Motion%20Graphic%20(1).mp4"
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        aria-label="AcoLead Instagram lead generation animation"
                         sx={{
                             width: '100%',
-                            maxWidth: 500,
+                            maxWidth: 600,
                             height: 'auto',
+                            objectFit: 'contain',
                             borderRadius: 4,
                             zIndex: 1,
+                            display: 'block',
                         }}
-                    />
+                    >
+                        Your browser does not support video playback.
+                    </Box>
 
                     {!isMobile && (
                         <>
-                            <Box
-                                component="img"
-                                src={calender}
-                                alt="Calendar"
-                                sx={{
-                                    position: 'absolute',
-                                    bottom: -150,
-                                    left: 0,
-                                    // width: isMobile ? 60 : 240,
-                                    width: 240,
-                                    height: 'auto',
-                                    zIndex: 2,
-                                    animation: 'float 3s ease-in-out infinite',
-                                    '@keyframes float': {
-                                        '0%, 100%': { transform: 'translateY(0px)' },
-                                        '50%': { transform: 'translateY(-10px)' },
-                                    },
-                                }}
-                            />
-                            <Box
-                                component="img"
-                                src={sales}
-                                alt="Sales"
-                                sx={{
-                                    position: 'absolute',
-                                    bottom: -60,
-                                    right: -30,
-                                    // width: isMobile ? 60 : 200,
-                                    width: 200,
-                                    height: 'auto',
-                                    zIndex: 2,
-                                    animation: 'float 3s ease-in-out infinite 1s',
-                                    '@keyframes float': {
-                                        '0%, 100%': { transform: 'translateY(0px)' },
-                                        '50%': { transform: 'translateY(-10px)' },
-                                    },
-                                }}
-                            />
-                            <Box
-                                component="img"
-                                src={card}
-                                alt="Card"
-                                sx={{
-                                    position: 'absolute',
-                                    top: -20,
-                                    right: 0,
-                                    // width: isMobile ? 50 : 190,
-                                    width: 190,
-                                    height: 'auto',
-                                    zIndex: 2,
-                                    animation: 'float 3s ease-in-out infinite 2s',
-                                    '@keyframes float': {
-                                        '0%, 100%': { transform: 'translateY(0px)' },
-                                        '50%': { transform: 'translateY(-10px)' },
-                                    },
-                                }}
-                            />
+                            
+                            
+                            
                         </>
                     )}
 
