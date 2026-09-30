@@ -140,7 +140,7 @@ const HomePage = ({ handleScrollToForm }) => {
                 sx={{
                     display: 'flex',
                     flexDirection: isMobile ? 'column' : 'row',
-                    alignItems: 'center',
+                    alignItems: isMobile ? 'center' : 'stretch',
                     maxWidth: '1200px',
                     width: '100%',
                     gap: 4,
@@ -440,29 +440,38 @@ const HomePage = ({ handleScrollToForm }) => {
                         flex: 1,
                         display: 'flex',
                         justifyContent: 'center',
+                        alignSelf: isMobile ? 'auto' : 'stretch',
                         position: 'relative',
                         overflow: 'visible',
                     }}
                 >
                     <Box
-                        component="video"
-                        src="/AcoLead%20Instagram%20Lead%20Gen%20Motion%20Graphic%20(1).mp4"
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        aria-label="AcoLead Instagram lead generation animation"
                         sx={{
                             width: '100%',
                             maxWidth: 600,
-                            height: 'auto',
-                            objectFit: 'contain',
-                            borderRadius: 4,
+                            height: isMobile ? 'auto' : '80%',
+                            borderRadius: '4px',
+                            overflow: 'hidden',
                             zIndex: 1,
-                            display: 'block',
                         }}
                     >
-                        Your browser does not support video playback.
+                        <Box
+                            component="video"
+                            src="/AcoLead%20Instagram%20Lead%20Gen%20Motion%20Graphic%20(1).mp4"
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            aria-label="AcoLead Instagram lead generation animation"
+                            sx={{
+                                width: '100%',
+                                height: '100%',
+                                objectFit: 'contain',
+                                display: 'block',
+                            }}
+                        >
+                            Your browser does not support video playback.
+                        </Box>
                     </Box>
 
                     {!isMobile && (

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Typography, Chip, Container, Paper } from '@mui/material';
-import { MapPinned } from 'lucide-react';
 import indiaMap from '@svg-maps/india';
 
 const servedStates = [
@@ -150,7 +149,7 @@ const HomePage = () => {
                       stroke={isActive ? '#1D4ED8' : isServed ? 'rgba(37, 99, 235, 0.4)' : '#CBD5E1'}
                       strokeWidth={isActive ? '2' : isServed ? '1' : '0.8'}
                       filter={isActive ? 'url(#glow-filter)' : 'none'}
-                      style={{ transition: 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)', cursor: isServed ? 'pointer' : 'default' }}
+                      style={{ transition: 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)', cursor: 'default' }}
                     />
                   );
                 })}
@@ -166,6 +165,7 @@ const HomePage = () => {
                     top: markerPositions[state.id]?.top || '50%',
                     left: markerPositions[state.id]?.left || '50%',
                     transform: 'translate(-50%, -50%)',
+                    zIndex: index === activeServiceStateIndex ? 2 : 1,
                     pointerEvents: 'auto',
                   }}
                 >
@@ -192,9 +192,8 @@ const HomePage = () => {
                       border: index === activeServiceStateIndex ? '2.5px solid #FFFFFF' : '2px solid #FFFFFF',
                       boxShadow: index === activeServiceStateIndex ? '0 0 16px rgba(37, 99, 235, 0.6), 0 4px 10px rgba(0,0,0,0.15)' : '0 2px 6px rgba(37, 99, 235, 0.3)',
                       transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                      cursor: 'pointer',
+                      cursor: 'default',
                     }}
-                    onClick={() => setActiveServiceState(index)}
                   />
 
                   {index === activeServiceStateIndex && (

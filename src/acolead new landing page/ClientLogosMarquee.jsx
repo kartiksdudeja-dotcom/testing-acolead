@@ -89,7 +89,7 @@ const realClientLogos = [
     name: 'Shri Gurukeshav',
     logoSrc: process.env.PUBLIC_URL + '/Client Logos/Shri_Gurukeshav _Logo (2).jpg',
     alt: 'Shri Gurukeshav Logo',
-    bigLogo: true,
+    
     href: 'https://shrigurukeshavprojects.com/',
   },
   {
@@ -104,7 +104,7 @@ const realClientLogos = [
     name: 'Maharshi Group',
     logoSrc: process.env.PUBLIC_URL + '/Client Logos/WhatsApp Image 2026-09-28 at 6.57.51 PM.jpeg',
     alt: 'Maharshi Group Logo',
-    bigLogo: true,
+    
   },
 ];
 
@@ -189,10 +189,20 @@ const ClientLogosMarquee = () => {
             max-width: 280px;
           }
 
-          .real-client-logo-img.shri-gurukeshav-logo {
-            max-height: 80px;
-            max-width: 190px;
-          }
+          .real-client-logo-img.maharshi-logo {
+  max-height: 125px;
+  max-width: 220px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+            .real-client-logo-img.shri-gurukeshav-logo {
+           max-height: 127px;
+           max-width: 190px;
+           width: auto;
+           height: auto;
+           object-fit: contain;
+}
 
           @media (max-width: 600px) {
             .real-client-logo-img.shri-gurukeshav-logo {
@@ -343,7 +353,7 @@ const ClientLogosMarquee = () => {
               <img
                 src={client.logoSrc}
                 alt={client.alt}
-                className={`real-client-logo-img${client.bigLogo ? ' big-logo' : ''}${client.id === 6 ? ' mittal-logo' : ''}${client.id === 13 ? ' shri-gurukeshav-logo' : ''}`}
+                className={`real-client-logo-img${client.bigLogo ? ' big-logo' : ''}${client.id === 6 ? ' mittal-logo' : ''}${client.id === 13 ? ' shri-gurukeshav-logo' : ''}${client.id === 15 ? ' maharshi-logo' : ''}`}
                 loading="lazy"
                 onError={(e) => {
                   // Fallback to text if an image fails to load

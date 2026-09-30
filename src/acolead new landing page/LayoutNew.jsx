@@ -4,6 +4,7 @@ import { Box, Button, Container, Typography } from '@mui/material';
 import Header from './Header';
 import RealEstateHero from './RealEstateHero';
 import HomePage from './HomePage';
+import SalesIntelligence from './SalesIntelligence';
 // import ImgSection from './ImgSection';
 import Mission from './Mission';
 import KeyFeatures from './KeyFeatures';
@@ -135,6 +136,8 @@ const LayoutNew = () => {
             <Box>
                 <HomePage handleScrollToForm={handleScrollToForm} />
             </Box>
+
+            <SalesIntelligence />
 
             {/* TRUSTED BY REAL ESTATE BUSINESSES CLIENT LOGO PIPELINE */}
             <ClientLogosMarquee />
