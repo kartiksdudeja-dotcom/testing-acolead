@@ -17,7 +17,7 @@ const HorizontalBar = () => {
         width: '100%',
         bgcolor: '#1677F7',
         py: 2,
-        overflowX: isMobile ? 'auto' : 'hidden',
+        overflowX: 'hidden',
       }}
     >
       <Box
@@ -29,7 +29,7 @@ const HorizontalBar = () => {
           px: 1,
           gap: isMobile ? 2 : 10,
           minWidth: '100%',
-          overflowX: 'auto',
+          overflowX: 'hidden',
         }}
       >
         {data.map((item, index) => (
@@ -47,7 +47,9 @@ const HorizontalBar = () => {
                   color: '#fff',
                   fontWeight: 700,
                   fontSize: { xs: '12px', sm: '15px' },
-                  whiteSpace: 'nowrap',
+                  lineHeight: 1.2,
+                  whiteSpace: isMobile ? 'normal' : 'nowrap',
+                  overflowWrap: isMobile ? 'anywhere' : 'normal',
                 }}
               >
                 {item.label}
