@@ -285,7 +285,7 @@ const handleArrowClick = (direction) => {
         
         // Configure your Payload API URL:
         // The Payload CMS API endpoint can still be overridden through the environment.
-        const apiUrl = process.env.REACT_APP_PAYLOAD_API_URL || 'https://206.189.91.184.sslip.io/api';
+        // const apiUrl = process.env.REACT_APP_PAYLOAD_API_URL || 'https://206.189.91.184.sslip.io/api';
         
         // Fetch published posts, ordered by creation date (newest first)
         const response = await fetch(

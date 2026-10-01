@@ -9,7 +9,7 @@ import SalesIntelligence from './SalesIntelligence';
 import Mission from './Mission';
 import KeyFeatures from './KeyFeatures';
 import HorizontalBar from './HorizontalBar';
-import BlogSection from './BlogSection';
+// import BlogSection from './BlogSection';
 import BookDemo from './BookDemo';
 import Footer from './Footer';
 // import ProductModules from '../new components/acolead-modules/ProductModules';
@@ -21,7 +21,7 @@ const LayoutNew = () => {
     const homeRef = useRef(null);
     const plansRef = useRef(null);
     const featuesRef = useRef(null);
-    const insightsRef = useRef(null);
+    // const insightsRef = useRef(null);
     const [country, setCountry] = useState('IN');
     const formRef = useRef(null);
     const formSectionRef = useRef(null);
@@ -68,7 +68,7 @@ const LayoutNew = () => {
                     home: homeRef,
                     about: aboutRef,
                     feature: featuesRef,
-                    insights: insightsRef,
+                    // insights: insightsRef,
                     plans: plansRef,
                 };
                 const element = map[section]?.current;
@@ -109,7 +109,7 @@ const LayoutNew = () => {
                         home: homeRef,
                         about: aboutRef,
                         feature: featuesRef,
-                        insights: insightsRef,
+                        // insights: insightsRef,
                         plans: plansRef,
                     };
 
@@ -160,9 +160,11 @@ const LayoutNew = () => {
 
             <HorizontalBar />
 
+            {/*
             <Box ref={insightsRef}>
                 <BlogSection />
             </Box>
+            */}
 
             <BookDemo
                 ref={formRef}
@@ -176,7 +178,7 @@ const LayoutNew = () => {
                         home: homeRef,
                         about: aboutRef,
                         feature: featuesRef,
-                        insights: insightsRef,
+                        // insights: insightsRef,
                         plans: plansRef,
                     };
 

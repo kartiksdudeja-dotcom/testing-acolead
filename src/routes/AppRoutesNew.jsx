@@ -27,7 +27,7 @@ import AcoSign from '../parent components/AcoSign';
 import GoogleDrive from '../new components/Integration pages/GoogleDrive';
 import Onedrive from '../new components/Integration pages/Onedrive';
 import LayoutNew from '../acolead new landing page/LayoutNew';
-import ArticleDetail from '../acolead new landing page/ArticleDetail';
+// import ArticleDetail from '../acolead new landing page/ArticleDetail';
 import PrivacyAcolead from '../acolead new landing page/footer pages/PrivacyAcolead';
 import TermsofUse from '../acolead new landing page/footer pages/TermsofUse';
 import PaymentResponseDialog from '../new components/payment/index';
