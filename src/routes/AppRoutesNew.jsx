@@ -36,9 +36,9 @@ import CheckoutPage from '../pay/CheckoutPage';
 import PaymentResultPage from '../pay/PaymentResultPage';
 import RenewalPage from '../pay/RenewalPage';
 import Signup from '../new components/acolead-modules/SignUp';
-import WhatsAppPage from '../new components/acolead-modules/pages/WhatsAppPage';
+// import WhatsAppPage from '../new components/acolead-modules/pages/WhatsAppPage';
 // import InstagramPage from '../new components/acolead-modules/pages/InstagramPage';
-import AICallingPage from '../new components/acolead-modules/pages/AICallingPage';
+// import AICallingPage from '../new components/acolead-modules/pages/AICallingPage';
 import MapPage from '../new components/map';
 
 const AppRoutesNew = () => {
@@ -76,7 +76,7 @@ const AppRoutesNew = () => {
                         <Route path="/request-a-demo/thank-you" element={<LayoutNew />} />
                         <Route path="/request-a-demo" element={<LayoutNew />} />
                         <Route path="" element={< LayoutNew />} />
-                        <Route path="/insights/:slug" element={<ArticleDetail />} />
+                        {/* <Route path="/insights/:slug" element={<ArticleDetail />} /> */}
                         <Route path="/acoSign" element={<AcoSign />} />
                         <Route path="/services" element={< AcoSign />} />
                         <Route path="/privacy" element={<Privacy />} />
@@ -102,9 +102,9 @@ const AppRoutesNew = () => {
                         <Route path="/googleDrive-integration" element={<GoogleDrive />} />
                         <Route path="/onedrive-integration" element={<Onedrive />} />
                         <Route path="/product/signup" element={<Signup />} />
-                        <Route path="/modules/whatsapp" element={<WhatsAppPage />} />
+                        {/* <Route path="/modules/whatsapp" element={<WhatsAppPage />} /> */}
                         {/* <Route path="/modules/instagram" element={<InstagramPage />} /> */}
-                        <Route path="/modules/ai-calling" element={<AICallingPage />} />
+                        {/* <Route path="/modules/ai-calling" element={<AICallingPage />} /> */}
                     </Routes>
                 </CSSTransition>
             </TransitionGroup>
