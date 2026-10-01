@@ -66,11 +66,11 @@ const BookDemo = React.forwardRef(({ formSectionRef }, ref) => {
               </Typography>
 
               <Typography variant="body1" gutterBottom>
-                🔹 100% lead masking and caller identification
+                🔹 lead masking and caller identification
               </Typography>
 
               <Typography variant="body1" gutterBottom>
-                🔹 How AcoLead boosts conversions by 35%
+                🔹 How AcoLead Helps Teams Improve Lead Management
               </Typography>
 
               <Typography variant="body1">
