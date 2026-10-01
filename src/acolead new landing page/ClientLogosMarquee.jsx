@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography, Container, useTheme, useMediaQuery } from '@mui/material';
+import { Box, Typography, Container } from '@mui/material';
 
 // Real Client Logos from public/Client Logos directory
 const realClientLogos = [
@@ -109,9 +109,6 @@ const realClientLogos = [
 ];
 
 const ClientLogosMarquee = () => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-
   // Duplicate the array 3x for smooth, 100% seamless infinite horizontal looping
   const marqueeItems = [...realClientLogos, ...realClientLogos, ...realClientLogos];
 
@@ -328,7 +325,7 @@ const ClientLogosMarquee = () => {
               key={`${client.id}-${index}`}
               className="real-client-logo-card"
               component={client.href ? 'a' : 'div'}
-              href={client.href}
+              href={/* href={client.href} */ undefined}
               target={client.href ? '_blank' : undefined}
               rel={client.href ? 'noopener noreferrer' : undefined}
               aria-label={client.href ? `Visit ${client.name} website` : undefined}
@@ -346,7 +343,7 @@ const ClientLogosMarquee = () => {
                 height: { xs: '110px', sm: '130px' },
                 boxShadow: '0 2px 10px rgba(0, 0, 0, 0.03)',
                 userSelect: 'none',
-                cursor: client.href ? 'pointer' : 'default',
+                cursor: 'default',
                 textDecoration: 'none',
               }}
             >

@@ -2,9 +2,9 @@ import React from 'react';
 import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
 
 const data = [
-  { percentage: '+100%', label: 'Zero Data Leaks' },
-  { percentage: '+63%', label: 'Operational Efficiency' },
-  { percentage: '+50%', label: 'Work-Life Balance' },
+  { label: 'Improve Sales Team Efficiency' },
+  { label: 'Lead Privacy Controls' },
+  { label: 'Reduce Manual Sales Work' },
 ];
 
 const HorizontalBar = () => {
@@ -37,26 +37,21 @@ const HorizontalBar = () => {
             <Box
               sx={{
                 flex: isMobile ? '1 1 0' : 'none',
-                minWidth: isMobile ? 0 : 100,
+                minWidth: isMobile ? 0 : 180,
                 textAlign: 'center',
               }}
             >
-              <Typography variant="h5" sx={{ fontWeight: 700, color: '#fff', whiteSpace: 'nowrap' }}>
-                {item.percentage}
-              </Typography>
               <Typography
-  variant="body2"
-  sx={{
-    color: "#fff",
-    mt: 0.5,
-    fontSize: { xs: "10px", sm: "15px" },
-    whiteSpace: "nowrap",
-    overflow: "hidden",
-    textOverflow: "ellipsis",
-  }}
->
-  {item.label}
-</Typography>
+                variant="body2"
+                sx={{
+                  color: '#fff',
+                  fontWeight: 700,
+                  fontSize: { xs: '12px', sm: '15px' },
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                {item.label}
+              </Typography>
             </Box>
             {index < data.length - 1 && (
               <Box

@@ -36,7 +36,7 @@ function Header({ scrollToSection, handleScrollToForm, country, setCountry }) {
   ];
   const navLinks = [
     { label: "Home", to: "home" },
-    { label: "About Us", to: "about" },
+    // { label: "About Us", to: "about" },
     { label: "Features", to: "feature" },
     // { label: "Insights", to: "insights" },
     // { label: 'Pricing', to: 'plans' },

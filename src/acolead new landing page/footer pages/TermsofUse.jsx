@@ -127,7 +127,7 @@ const TermsofUse = () => {
             >
                 <h1>Terms of Use</h1>
                 <p>
-                    <strong>Effective Date:</strong> March 30, 2027
+                    <strong>Last Updated:</strong> March 2026
                 </p>
 
                 <p>

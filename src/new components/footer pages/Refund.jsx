@@ -111,7 +111,7 @@ const Refund = () => {
                     gutterBottom
                     sx={{ fontSize: isMobile ? '12px' : isTablet ? '14px' : '16px' }}
                 >
-                    Effective Date: [Insert Date]
+                    Last Updated: [Insert Date]
                 </Typography>
                 <Typography
                     variant="body1"

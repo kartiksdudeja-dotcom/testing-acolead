@@ -27,9 +27,10 @@ const LayoutNew = () => {
     const formSectionRef = useRef(null);
     const location = useLocation();
     const navigate = useNavigate();
+    const isRequestDemoRoute = location.pathname.replace(/\/+$/, '') === '/request-a-demo';
 
     const handleScrollToForm = useCallback(() => {
-        if (location.pathname !== '/request-a-demo') {
+        if (!isRequestDemoRoute) {
             navigate('/request-a-demo');
             return;
         }
@@ -49,15 +50,15 @@ const LayoutNew = () => {
                 formRef.current?.focusFirstField?.();
             }, 600);
         }
-    }, [location.pathname, navigate]);
+    }, [isRequestDemoRoute, navigate]);
 
     useEffect(() => {
-        if (location.pathname === '/request-a-demo') {
+        if (isRequestDemoRoute) {
             setTimeout(() => {
                 handleScrollToForm();
             }, 300);
         }
-    }, [handleScrollToForm, location.pathname]);
+    }, [handleScrollToForm, isRequestDemoRoute]);
 
     useEffect(() => {
         const params = new URLSearchParams(location.search);

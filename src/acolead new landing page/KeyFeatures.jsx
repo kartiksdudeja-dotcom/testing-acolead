@@ -30,7 +30,7 @@ const featuresData = [
     },
     {
         icon: <Icon2 />,
-        title: '100% LEAD PRIVACY CONTROL',
+        title: 'LEAD PRIVACY CONTROL',
         subtitle:
             'Protect your customer data with complete lead masking across calls, WhatsApp, and internal systems.',
     },
@@ -72,9 +72,9 @@ const featuresData = [
     },
     {
         icon: <Icon9 />,
-        title: 'WHATSAPP BULK MARKETING WITH 1600+ TEMPLATES',
+        title: 'WHATSAPP BULK MARKETING ',
         subtitle:
-            'Access 1600+ proven templates to launch high-impact WhatsApp campaigns at scale and drive better partner engagement.',
+            'Access proven templates to launch high-impact WhatsApp campaigns at scale and drive better partner engagement.',
     }    
 ];
 
