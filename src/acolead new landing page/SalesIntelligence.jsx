@@ -25,11 +25,16 @@ const SalesIntelligence = () => (
           sx={{
             order: { xs: 2, md: 1 },
             overflow: 'hidden',
-            aspectRatio: { xs: '16 / 10', md: '4 / 3' },
             borderRadius: 3,
-            border: '1px solid #DCE7F6',
-            backgroundColor: '#EAF2FF',
+            border: '1px solid #1a2744',
+            backgroundColor: '#071326',
             boxShadow: '0 18px 44px rgba(24, 75, 145, 0.12)',
+            height: { xs: 360, sm: 420, md: 460 },
+            width: '100%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            p: { xs: 1, sm: 2 },
           }}
         >
           <Box
@@ -40,7 +45,15 @@ const SalesIntelligence = () => (
             loop
             playsInline
             aria-label="AcoLead Sales Intelligence identifying leads at risk"
-            sx={{ width: '100%', height: '100%', display: 'block', objectFit: 'contain' }}
+            sx={{
+              width: '100%',
+              height: '100%',
+              maxWidth: '100%',
+              maxHeight: '100%',
+              display: 'block',
+              objectFit: 'contain',
+              borderRadius: 2,
+            }}
           >
             Your browser does not support video playback.
           </Box>
