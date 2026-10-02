@@ -34,13 +34,13 @@ const SalesIntelligence = () => (
         >
           <Box
             component="video"
-            src="/LeadAtRisk.mp4"
+            src="/loop 2.mp4"
             autoPlay
             muted
             loop
             playsInline
             aria-label="AcoLead Sales Intelligence identifying leads at risk"
-            sx={{ width: '100%', height: '100%', display: 'block', objectFit: 'cover' }}
+            sx={{ width: '100%', height: '100%', display: 'block', objectFit: 'contain' }}
           >
             Your browser does not support video playback.
           </Box>
