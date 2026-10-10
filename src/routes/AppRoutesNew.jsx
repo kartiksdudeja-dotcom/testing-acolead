@@ -45,6 +45,51 @@ const AppRoutesNew = () => {
     const location = useLocation();
     const topRef = useRef(null);
     const isPayRoute = location.pathname.startsWith('/pay');
+    
+    
+
+useEffect(() => {
+  const canonicalUrls = {
+    "/": "https://www.acolead.com/",
+    "/privacy-policy": "https://www.acolead.com/privacy-policy",
+    "/request-a-demo": "https://www.acolead.com/request-a-demo",
+  };
+
+  const pathname = location.pathname.replace(/\/+$/, "") || "/";
+  const canonicalUrl = canonicalUrls[pathname];
+
+  let canonical = document.querySelector(
+    'link[rel="canonical"]'
+  );
+
+  if (canonicalUrl) {
+    if (!canonical) {
+      canonical = document.createElement("link");
+      canonical.setAttribute("rel", "canonical");
+      document.head.appendChild(canonical);
+    }
+
+    canonical.setAttribute("href", canonicalUrl);
+  } else if (canonical) {
+    canonical.remove();
+  }
+
+  let robots = document.querySelector('meta[name="robots"]');
+
+  if (pathname === "/request-a-demo/thank-you") {
+    if (!robots) {
+      robots = document.createElement("meta");
+      robots.setAttribute("name", "robots");
+      document.head.appendChild(robots);
+    }
+
+    robots.setAttribute("content", "noindex, follow");
+  } else if (robots?.content === "noindex, follow") {
+    robots.remove();
+  }
+}, [location.pathname]);
+
+
 
     useEffect(() => {
         if (topRef.current) {
