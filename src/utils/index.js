@@ -15,7 +15,7 @@ const isPWA = isStandalone;
 
 export const APP_URLS = {
     // coalitionifyWebsite: "https://www.coalitionify.com",
-    coalitionifyWebsite: "https://www.linkedin.com/company/coalitionify-innovate",
+    coalitionifyWebsite: "https://coalitionify.com/",
     coalitionifyLinkedin: "https://www.linkedin.com/company/coalitionify-innovate",
     coalitionifyFacebook: "https://www.facebook.com/acolead",
     coalitionifyInstagram: "https://www.instagram.com/acolead/",
