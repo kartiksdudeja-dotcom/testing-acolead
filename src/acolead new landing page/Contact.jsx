@@ -69,14 +69,23 @@ const Contact = forwardRef((props, ref) => {
                     ...values,
                     phoneNumber: `${countryCode}${values.phoneNumber}`,
                 }
-                const result = await window.AcoLead.submitEnquiry(
-                    '1f03088f-28cb-6ac0-86a7-8a56d9a1daba',
-                    payload.name,
-                    payload.phoneNumber,
-                    payload.requirement,
-                    payload.email,
-                    payload.companyName
-                )
+               if (
+  !window.AcoLead ||
+  typeof window.AcoLead.submitEnquiry !== 'function'
+) {
+  throw new Error(
+    'AcoLead SDK is not loaded. Please check the SDK script.'
+  );
+}
+
+const result = await window.AcoLead.submitEnquiry(
+  '1f03088f-28cb-6ac0-86a7-8a56d9a1daba',
+  payload.name,
+  payload.phoneNumber,
+  payload.requirement || '',
+  payload.email,
+  payload.companyName
+);
 
                 if (!result.code) {
                     resetForm()
