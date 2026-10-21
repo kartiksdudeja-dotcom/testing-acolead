@@ -10,11 +10,14 @@ import {
     Tooltip,
     Typography,
     Select,
+    Alert,
 } from '@mui/material'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 import WarningIcon from '@mui/icons-material/Warning'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
+import DemoPhoneOtp from '../new components/DemoPhoneOtp'
+import { submitVerifiedDemoLead } from '../utils/demoLeadOtp'
 
 const industries = [
     'Technology',
@@ -30,6 +33,8 @@ const ScheduleForm = ({ contactFormRef, highlighted }) => {
     const isMobile = useMediaQuery(theme.breakpoints.down('md'))
     const buttonRef = useRef()
     const [isFormSubmitted, setIsFormSubmitted] = useState(false)
+    const [demoOtpVerificationId, setDemoOtpVerificationId] = useState('')
+    const [submitError, setSubmitError] = useState('')
     const [countryCode, setCountryCode] = useState('+91')
     const countryOptions = [
         { code: '+91', label: '🇮🇳 +91' },
@@ -58,35 +63,19 @@ const ScheduleForm = ({ contactFormRef, highlighted }) => {
         validationSchema,
         onSubmit: async (values, { resetForm }) => {
             try {
-                const payload = {
-                    ...values,
-                    phoneNumber: `${countryCode}${values.phoneNumber}`,
-                }
-                const result = await window.AcoLead.submitEnquiry("1f03088f-28cb-6ac0-86a7-8a56d9a1daba",
-                    payload.name,
-                    payload.phoneNumber,
-                    payload.requirement,
-                    payload.email,
-                    payload.companyName
-                )
-               
-                // const response = await fetch(
-                //     'https://api.dev.coalitionify.com/customer-backend/api/v1/document-template/sheet',
-                //     {
-                //         method: 'POST',
-                //         headers: { 'Content-Type': 'application/json' },
-                //         body: JSON.stringify(payload),
-                //     }
-                // )
-                console.log("result:",result);
-                if (!result.code) {
-                    resetForm()
-                    setIsFormSubmitted(true)
-                } else {
-                    console.error('API call failed')
-                }
+                setSubmitError('')
+                await submitVerifiedDemoLead({
+                    name: values.name,
+                    mobileNumber: `${countryCode}${values.phoneNumber}`,
+                    email: values.email,
+                    company: values.companyName,
+                    demoOtpVerificationId,
+                })
+                resetForm()
+                setDemoOtpVerificationId('')
+                setIsFormSubmitted(true)
             } catch (error) {
-                console.error('Error during API call:', error)
+                setSubmitError(error.message || 'Could not submit your request. Please try again.')
             }
         },
     })
@@ -284,6 +273,11 @@ const ScheduleForm = ({ contactFormRef, highlighted }) => {
                                         ),
                                 }}
                             />
+                            <DemoPhoneOtp
+                                mobileNumber={`${countryCode}${formik.values.phoneNumber}`}
+                                hasPhoneInput={formik.values.phoneNumber.length > 0}
+                                onVerified={setDemoOtpVerificationId}
+                            />
                             <TextField
                                 label="Company Name"
                                 name="companyName"
@@ -311,6 +305,7 @@ const ScheduleForm = ({ contactFormRef, highlighted }) => {
                                 <Button
                                     ref={buttonRef}
                                     type="submit"
+                                    disabled={!demoOtpVerificationId || formik.isSubmitting}
                                     variant="contained"
                                     size="large"
                                     fullWidth
@@ -321,9 +316,10 @@ const ScheduleForm = ({ contactFormRef, highlighted }) => {
                                         maxWidth: 100, // optional to restrict the button's width
                                     }}
                                 >
-                                    submit
+                                    {formik.isSubmitting ? 'Submitting…' : 'Submit'}
                                 </Button>
                             </Box>
+                            {submitError && <Alert severity="error">{submitError}</Alert>}
 
 
                             <Typography

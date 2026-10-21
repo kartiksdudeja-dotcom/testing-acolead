@@ -18,6 +18,8 @@ import { useFormik } from 'formik'
 import { useNavigate } from 'react-router-dom'
 import * as Yup from 'yup'
 import DemoIcon from './icons/DemoIcon'
+import DemoPhoneOtp from '../new components/DemoPhoneOtp'
+import { submitVerifiedDemoLead } from '../utils/demoLeadOtp'
 
 const Contact = forwardRef((props, ref) => {
     const navigate = useNavigate()
@@ -26,6 +28,7 @@ const Contact = forwardRef((props, ref) => {
     const buttonRef = useRef()
     const [isFormSubmitted, setIsFormSubmitted] = useState(false)
     const [submitError, setSubmitError] = useState('')
+    const [demoOtpVerificationId, setDemoOtpVerificationId] = useState('')
 
     const firstFieldRef = useRef();
 
@@ -65,43 +68,19 @@ const Contact = forwardRef((props, ref) => {
         onSubmit: async (values, { resetForm }) => {
             setSubmitError('')
             try {
-                const payload = {
-                    ...values,
-                    phoneNumber: `${countryCode}${values.phoneNumber}`,
-                }
-               if (
-  !window.AcoLead ||
-  typeof window.AcoLead.submitEnquiry !== 'function'
-) {
-  throw new Error(
-    'AcoLead SDK is not loaded. Please check the SDK script.'
-  );
-}
-
-const result = await window.AcoLead.submitEnquiry(
-  '1f03088f-28cb-6ac0-86a7-8a56d9a1daba',
-  payload.name,
-  payload.phoneNumber,
-  payload.requirement || '',
-  payload.email,
-  payload.companyName
-);
-
-                if (!result.code) {
-                    resetForm()
-                    setIsFormSubmitted(true)
-                    navigate('/request-a-demo/thank-you')
-                } else {
-                    setSubmitError('We could not submit your request. Please try again shortly.')
-                    console.error('AcoLead enquiry failed:', {
-                        status: result.response?.status,
-                        response: result.response?.data,
-                        code: result.code,
-                    })
-                }
+                await submitVerifiedDemoLead({
+                    name: values.name,
+                    mobileNumber: `${countryCode}${values.phoneNumber}`,
+                    email: values.email,
+                    company: values.companyName,
+                    demoOtpVerificationId,
+                })
+                resetForm()
+                setDemoOtpVerificationId('')
+                setIsFormSubmitted(true)
+                navigate('/request-a-demo/thank-you')
             } catch (error) {
-                setSubmitError('We could not submit your request. Please try again shortly.')
-                console.error('Error during API call:', error)
+                setSubmitError(error.message || 'We could not submit your request. Please try again shortly.')
             }
         },
     })
@@ -237,6 +216,7 @@ const result = await window.AcoLead.submitEnquiry(
     <Typography sx={{ color: 'white', fontWeight: 600, mb: 0.5 }}>{label}</Typography>
 
     {name === 'phoneNumber' ? (
+      <>
       <TextField
         name={name}
         placeholder={placeholder}
@@ -278,6 +258,12 @@ const result = await window.AcoLead.submitEnquiry(
             ),
         }}
       />
+      <DemoPhoneOtp
+        mobileNumber={`${countryCode}${formik.values.phoneNumber}`}
+        hasPhoneInput={formik.values.phoneNumber.length > 0}
+        onVerified={setDemoOtpVerificationId}
+      />
+      </>
     ) : (
       <TextField
         name={name}
@@ -313,6 +299,7 @@ const result = await window.AcoLead.submitEnquiry(
                                 <Button
                                     ref={buttonRef}
                                     type="submit"
+                                    disabled={!demoOtpVerificationId || formik.isSubmitting}
                                     variant="contained"
                                     size="large"
                                     fullWidth
@@ -326,6 +313,7 @@ const result = await window.AcoLead.submitEnquiry(
                                     Request Demo
                                 </Button>
                             </Box>
+                            {submitError && <Alert severity="error" sx={{ mx: 3 }}>{submitError}</Alert>}
                         </Box>
                     </form>
                 </>
