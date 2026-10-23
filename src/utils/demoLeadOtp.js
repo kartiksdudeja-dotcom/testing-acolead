@@ -1,15 +1,16 @@
 const DEFAULT_CRM_API_URL = 'https://api.acolead.com/crm-backend/api'
+const DEMO_CAPTURE_API_URL = process.env.REACT_APP_DEMO_CAPTURE_API_URL || DEFAULT_CRM_API_URL
 const DEMO_CP_ID = '1f03088f-28cb-6ac0-86a7-8a56d9a1daba'
 
-const developmentApiUrl = 'http://localhost:4104/crm-backend/api'
+const developmentApiUrl = 'https://api.acolead.com/crm-backend/api'
 const configuredApiUrl = process.env.REACT_APP_DEMO_OTP_API_URL
   || (process.env.NODE_ENV === 'development'
     ? developmentApiUrl
     : process.env.REACT_APP_CRM_BACKEND_URL || DEFAULT_CRM_API_URL)
 const crmApiUrl = configuredApiUrl.replace(/\/$/, '')
 
-async function postJson(path, body) {
-  const response = await fetch(`${crmApiUrl}${path}`, {
+async function postJson(path, body, apiUrl = crmApiUrl) {
+  const response = await fetch(`${apiUrl}${path}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body),
@@ -29,10 +30,10 @@ async function postJson(path, body) {
 }
 
 export const sendDemoLeadOtp = (mobileNumber) =>
-  postJson(`/v1/cp/${DEMO_CP_ID}/demo-otp/send`, { mobileNumber })
+  postJson('/v1/cp/demo-otp/send', { mobileNumber })
 
 export const verifyDemoLeadOtp = (challengeId, otp) =>
-  postJson(`/v1/cp/${DEMO_CP_ID}/demo-otp/verify`, { challengeId, otp })
+  postJson('/v1/cp/demo-otp/verify', { challengeId, otp })
 
 export const submitVerifiedDemoLead = ({
   name,
@@ -49,4 +50,4 @@ export const submitVerifiedDemoLead = ({
   company,
   type: 'DEMO_ENQUIRY',
   demoOtpVerificationId,
-})
+}, DEMO_CAPTURE_API_URL)
