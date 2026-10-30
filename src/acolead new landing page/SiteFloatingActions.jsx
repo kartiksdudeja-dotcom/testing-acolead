@@ -12,8 +12,8 @@ const SiteFloatingActions = () => (
       position: 'fixed',
       zIndex: 1300,
       left: { xs: 0, md: 'auto' },
-      right: 0,
-      bottom: 0,
+      right: { xs: 0, md: 20 },
+      bottom: { xs: 0, md: 20 },
       display: 'flex',
       alignItems: 'center',
       gap: 1,
@@ -57,9 +57,9 @@ const SiteFloatingActions = () => (
           width: 46,
           height: 46,
           color: '#FFFFFF',
-          bgcolor: '#0859C1',
-          boxShadow: '0 8px 24px rgba(8, 89, 193, 0.25)',
-          '&:hover': { bgcolor: '#06489D' },
+          bgcolor: '#25D366',
+          boxShadow: '0 8px 24px rgba(37, 211, 102, 0.32)',
+          '&:hover': { bgcolor: '#1EBA59' },
           '@media (min-width:1024px)': { width: 58, height: 58 },
         }}
       >
