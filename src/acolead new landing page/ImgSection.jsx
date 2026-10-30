@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
-import yourImage from './images/centerimg.png';
+import yourImage from './images/centerimg.webp';
 import { useInView } from 'react-intersection-observer';
 import { motion } from 'framer-motion';
 const ImgSection = ({aboutRef}) => {
@@ -42,7 +42,7 @@ const ImgSection = ({aboutRef}) => {
                         sx={{ fontWeight: 600, fontSize: isMobile ? '1rem' : '1.8rem', color: '#000' }}
                     >
                         At its core,{' '}
-                        <Box component="span" sx={{ color: '#1677F7', display: 'inline' }}>
+                        <Box component="span" sx={{ color: '#0859C1', display: 'inline' }}>
                             Acolead {' '}
                         </Box>
                         is a robust <br />

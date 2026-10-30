@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Grid, Stack, Typography, useMediaQuery, useTheme } from '@mui/material';
-import iconsimg from './images/icons.png';
+import iconsimg from './images/icons.webp';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CommanSvg from './icons/CommanSvg';
 import EmpowermentIcon from './icons/EmpowermentIcon';
@@ -70,7 +70,22 @@ const Mission = () => {
           {/* Left Section */}
           <Grid item xs={12} md={6}>
             <Box sx={{ ml: { xs: 0, sm: 2 } }} p={isMobile ? 2 : 0}>
-              <Typography variant={isMobile ? "h6" : "h4"} sx={{ fontWeight: 700, mb: 4 }}>
+              <Typography
+                variant={isMobile ? "h6" : "h4"}
+                sx={{
+                  fontWeight: 700,
+                  mb: 4,
+                  '&::after': {
+                    content: '""',
+                    display: 'block',
+                    width: 48,
+                    height: 4,
+                    borderRadius: 2,
+                    backgroundColor: '#3B9D1D',
+                    mt: 2,
+                  },
+                }}
+              >
                 Mission
               </Typography>
             

@@ -1,31 +1,23 @@
-import React, { createContext, useContext, useEffect } from 'react';
-import mixpanel from 'mixpanel-browser';
+import React, { createContext, useContext } from 'react';
+import { pushAnalyticsEvent, pushTrackingEvent } from '../utils/tracking';
 
 const MixpanelContext = createContext(null);
 
 export const MixpanelProvider = ({ children }) => {
-  useEffect(() => {
-    mixpanel.init('c8adf360786813ebcbdc0b2983d8b933', {
-      ignore_dnt: true,
-      debug: true,
-      persistence: 'localStorage',
-    });
-  }, []);
-
   const trackEvent = (event, properties = {}) => {
-    mixpanel.track(event, properties);
+    pushAnalyticsEvent(event, properties);
   };
 
   const identifyUser = (userId) => {
-    mixpanel.identify(userId);
+    pushAnalyticsEvent('identify', { user_id: userId });
   };
 
   const setUserProfile = (properties) => {
-    mixpanel.people.set(properties);
+    pushAnalyticsEvent('profile', properties);
   };
 
   const logoutUser = () => {
-    mixpanel.reset();
+    pushTrackingEvent('mixpanel_reset');
   };
 
   const contextValue = { trackEvent, identifyUser, setUserProfile, logoutUser };

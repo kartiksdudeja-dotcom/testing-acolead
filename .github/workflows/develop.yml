@@ -30,6 +30,7 @@ jobs:
         CI: false
         REACT_APP_CRM_BACKEND_URL: https://api.acolead.com/crm-backend/api
         REACT_APP_PAYLOAD_API_URL: https://206.189.91.184.sslip.io/api
+        REACT_APP_DEMO_OTP_PROXY_URL: https://206.189.91.184.sslip.io/api/demo-otp/send
     - name: Deploy to Production
       uses: jakejarvis/s3-sync-action@master
       with:

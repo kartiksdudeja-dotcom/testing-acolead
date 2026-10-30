@@ -1,102 +1,42 @@
-import React from "react";
-import { Grid, Box, Typography, useMediaQuery } from "@mui/material";
-import { useTheme, keyframes } from "@mui/material/styles";
-import Contact from "./Contact";
+import React from 'react';
+import { Box, Container, Grid, Link, Typography } from '@mui/material';
+import Contact from './Contact';
+import { pushTrackingEvent } from '../utils/tracking';
 
-const slideInLeft = keyframes`
-  from {
-    opacity: 0;
-    transform: translateX(-40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-`;
-
-const BookDemo = React.forwardRef(({ formSectionRef }, ref) => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-
-  return (
-    <Box
-      sx={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        mt: 5,
-      }}
-    >
-      <Grid
-        container
-        spacing={4}
-        alignItems="center"
-        justifyContent="center"
-        maxWidth="lg"
-      >
-        <Grid
-          item
-          xs={12}
-          md={6}
-          sx={{
-            animation: `${slideInLeft} 0.8s ease forwards`,
-          }}
-        >
-          <Box p={isMobile ? 2 : 0}>
-            <Typography variant="h4" fontWeight={700} gutterBottom>
-              Smarter{" "}
-              <Box component="span" sx={{ color: "#1677F7" }}>
-                Lead Management
-              </Box>{" "}
-              Starts Here
+const BookDemo = React.forwardRef(({ formSectionRef, includeBudgetQuestion = false, includeActiveBookings = false, title, description, submitLabel }, ref) => (
+  <Box component="section" id="demo" sx={{ bgcolor: '#F2F6FC', py: { xs: 6, md: 8 } }}>
+    <Container maxWidth="lg">
+      <Grid container spacing={{ xs: 4, md: 6 }} alignItems="center">
+        <Grid item xs={12} md={5}>
+          <Box sx={{ pr: { md: 2 } }}>
+            <Typography component="h2" sx={{ color: '#101C2E', fontFamily: 'Plus Jakarta Sans, sans-serif', fontSize: { xs: 32, md: 40 }, fontWeight: 800, letterSpacing: '-.035em', lineHeight: 1.16, mb: 1.8 }}>
+              {title || 'Ready to Transform Your Real Estate Sales?'}
             </Typography>
-
-            <Typography variant="subtitle1" color="text.secondary" gutterBottom>
-              Book a personalized AcoLead demo and see how we simplify, secure,
-              and supercharge your sales workflows.
+            <Box sx={{ width: 48, height: 4, bgcolor: '#3B9D1D', borderRadius: 3, mb: 2 }} />
+            <Typography sx={{ color: '#536277', fontSize: { xs: 15, md: 16 }, lineHeight: 1.65, mb: 2.2 }}>
+              {description || 'See how AcoLead helps your team capture, manage and convert every opportunity. See it on your own leads in 20 minutes.'}
             </Typography>
-
-            <Box mt={4}>
-              <Typography variant="subtitle1" gutterBottom>
-                How to automate lead routing and follow-ups
-              </Typography>
-
-              <Typography variant="body1" gutterBottom>
-                🔹 Instant WhatsApp & call-based customer engagement
-              </Typography>
-
-              <Typography variant="body1" gutterBottom>
-                🔹 lead masking and caller identification
-              </Typography>
-
-              <Typography variant="body1" gutterBottom>
-                🔹 How AcoLead Helps Teams Improve Lead Management
-              </Typography>
-
-              <Typography variant="body1">
-                🔹 Mobile-first lead management for field teams
-              </Typography>
+            <Box sx={{ display: 'grid', gap: .7, mb: 2 }}>
+              <Link href="tel:+919112614174" onClick={() => pushTrackingEvent('phone_click', { page_path: window.location.pathname })} underline="hover" sx={{ color: '#0859C1', fontWeight: 700, fontSize: 14 }}>+91 91126 14174</Link>
+              <Link href="mailto:sales@coalitionify.com" underline="hover" sx={{ color: '#0859C1', fontWeight: 700, fontSize: 14 }}>sales@coalitionify.com</Link>
+            </Box>
+            <Typography sx={{ color: '#14243A', fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 15, mb: 2.5 }}>
+              Own Every Lead. Close Every Deal.
+            </Typography>
+            <Box sx={{ display: 'flex', gap: 1.5, alignItems: 'center', p: 1.3, width: 'fit-content', borderRadius: 2, bgcolor: '#fff', border: '1px solid #E1E9F3' }}>
+              <Box component="img" src="https://api.qrserver.com/v1/create-qr-code/?size=112x112&margin=1&data=https%3A%2F%2Fwww.acolead.com%2Frequest-a-demo" alt="QR code to open the AcoLead demo request page" sx={{ width: 72, height: 72, display: 'block' }} />
+              <Typography sx={{ color: '#536277', fontSize: 12, lineHeight: 1.4, maxWidth: 125 }}>Scan to open the demo request form</Typography>
             </Box>
           </Box>
         </Grid>
-
-       <Grid
-  item
-  xs={12}
-  md={6}
-  ref={formSectionRef}
->
-  <Box
-    sx={{
-      px: { xs: 1, md: 0 },
-    }}
-  >
-    <Contact ref={ref} />
-  </Box>
-</Grid>
+        <Grid item xs={12} md={7} ref={formSectionRef}>
+          <Contact ref={ref} includeBudgetQuestion={includeBudgetQuestion} includeActiveBookings={includeActiveBookings} submitLabel={submitLabel} />
+        </Grid>
       </Grid>
-    </Box>
-  );
-});
+    </Container>
+  </Box>
+));
+
+BookDemo.displayName = 'BookDemo';
 
 export default BookDemo;

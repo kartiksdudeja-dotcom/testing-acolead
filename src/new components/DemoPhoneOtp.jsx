@@ -53,7 +53,7 @@ export default function DemoPhoneOtp({ mobileNumber, hasPhoneInput, onVerified }
       setChallengeId(result.challengeId)
       setOtp('')
       setResendWait(result.resendAfterSeconds || 30)
-      setMessage(`We sent a verification code to ${mobileNumber}.`)
+      setMessage(`We sent a verification code to Whatsapp Number ${mobileNumber}.`)
     } catch (sendError) {
       if (sendError.retryAfterSeconds) setResendWait(sendError.retryAfterSeconds)
       setError(sendError.message)

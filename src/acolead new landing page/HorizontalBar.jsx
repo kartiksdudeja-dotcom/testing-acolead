@@ -15,7 +15,7 @@ const HorizontalBar = () => {
     <Box
       sx={{
         width: '100%',
-        bgcolor: '#1677F7',
+        bgcolor: '#0859C1',
         py: 2,
         overflowX: 'hidden',
       }}

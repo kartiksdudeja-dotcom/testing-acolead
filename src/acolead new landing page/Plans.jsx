@@ -89,7 +89,7 @@ const Plans = ({ country }) => {
         <Box sx={{ width: '100%', overflowX: 'hidden', py: 8, bgcolor: '#F9FBFF' }}>
             <Typography variant="h4" align="center" sx={{ fontWeight: 700, mb: 2 }}>
                 We have{' '}
-                <Box component="span" sx={{ color: '#1677F7' }}>
+                <Box component="span" sx={{ color: '#0859C1' }}>
                     plans
                 </Box>{' '}
                 for everyone!
@@ -114,7 +114,7 @@ const Plans = ({ country }) => {
                             borderRadius: 0,
                             fontWeight: 600,
                             '&.Mui-selected': {
-                                backgroundColor: '#1677F7',
+                                backgroundColor: '#0859C1',
                                 color: '#fff',
                             },
                         }}
@@ -129,7 +129,7 @@ const Plans = ({ country }) => {
                             borderRadius: 0,
                             fontWeight: 600,
                             '&.Mui-selected': {
-                                backgroundColor: '#1677F7',
+                                backgroundColor: '#0859C1',
                                 color: '#fff',
                             },
                         }}
@@ -218,8 +218,8 @@ const Plans = ({ country }) => {
                                             borderRadius: 3,
                                             fontWeight: 600,
                                             textTransform: 'none',
-                                            borderColor: '#1677F7',
-                                            color: '#1677F7',
+                                            borderColor: '#0859C1',
+                                            color: '#0859C1',
                                             '&:hover': {
                                                 borderColor: '#115ecf',
                                                 backgroundColor: '#f0f7ff',

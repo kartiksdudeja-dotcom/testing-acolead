@@ -38,6 +38,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "postbuild": "node scripts/prerender.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -45,6 +46,52 @@
     "extends": [
       "react-app",
       "react-app/jest"
+    ]
+  },
+  "reactSnap": {
+    "include": [
+      "/",
+      "/features",
+      "/pricing",
+      "/customers",
+      "/about",
+      "/request-a-demo",
+      "/demo",
+      "/switch-to-acolead",
+      "/features/lead-capture",
+      "/features/lead-routing",
+      "/features/pipeline",
+      "/features/sales-intelligence",
+      "/features/site-visits",
+      "/features/inventory",
+      "/features/whatsapp",
+      "/features/calling",
+      "/features/team-field",
+      "/features/mobile-app",
+      "/features/marketing-roi",
+      "/features/website",
+      "/features/channel-partners",
+      "/features/partner-leads",
+      "/features/invoice-board",
+      "/features/post-sales",
+      "/features/resale",
+      "/features/reports",
+      "/ai/sales-agent",
+      "/ai/nova",
+      "/ai/connector",
+      "/zero-lead-breach",
+      "/solutions/builders",
+      "/solutions/channel-partners",
+      "/solutions/mandate-companies",
+      "/solutions/resale",
+      "/privacy-policy",
+      "/terms-of-use",
+      "/refund-policy"
+    ],
+    "skipThirdPartyRequests": true,
+    "puppeteerArgs": [
+      "--no-sandbox",
+      "--disable-setuid-sandbox"
     ]
   },
   "browserslist": {
@@ -58,5 +105,15 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "puppeteer": "^13.7.0",
+    "react-snap": "^1.23.0"
+  },
+  "overrides": {
+    "puppeteer": "^13.7.0"
+  },
+  "allowScripts": {
+    "puppeteer@13.7.0": true
   }
 }

@@ -459,7 +459,7 @@ const handleArrowClick = (direction) => {
       variant="overline"
       sx={{
         display: 'block',
-        color: '#1677F7',
+        color: '#0859C1',
         fontWeight: 700,
         letterSpacing: '0.12em',
         fontSize: '0.76rem',
@@ -498,7 +498,7 @@ const handleArrowClick = (direction) => {
               py: 8,
             }}
           >
-            <CircularProgress sx={{ color: '#1677F7' }} />
+            <CircularProgress sx={{ color: '#0859C1' }} />
           </Box>
         )}
 
@@ -545,7 +545,7 @@ const handleArrowClick = (direction) => {
                 color: '#6B7280',
                 boxShadow: '0 4px 14px rgba(16, 24, 40, 0.14)',
                 '&:hover': {
-                backgroundColor: '#1677F7',
+                backgroundColor: '#0859C1',
                 color: '#fff',
 },
               }}
@@ -565,7 +565,7 @@ const handleArrowClick = (direction) => {
                 backgroundColor: '#fff',
                 color: 'inherit',
                 boxShadow: '0 4px 14px rgba(16, 24, 40, 0.14)',
-                '&:hover': { backgroundColor: '#1677F7', color: '#fff' },
+                '&:hover': { backgroundColor: '#0859C1', color: '#fff' },
               }}
             >
               <ChevronRightIcon />
@@ -733,7 +733,7 @@ const handleArrowClick = (direction) => {
                       sx={{
                         fontSize: '1rem',
                         fontWeight: 700,
-                        color: '#1677F7',
+                        color: '#0859C1',
                         textTransform: 'none',
                       }}
                     >
@@ -751,7 +751,7 @@ const handleArrowClick = (direction) => {
                         backgroundColor: '#e5f0ff',
                       }}
                     >
-                      <ArrowForwardIcon sx={{ color: '#1677F7', fontSize: '1.25rem' }} />
+                      <ArrowForwardIcon sx={{ color: '#0859C1', fontSize: '1.25rem' }} />
                     </Box>
                   </Box>
                 </Box>
@@ -775,7 +775,7 @@ const handleArrowClick = (direction) => {
                       border: 0,
                       borderRadius: '50%',
                       cursor: 'pointer',
-                      backgroundColor: index === activeDot ? '#1677F7' : '#cbd0d8',
+                      backgroundColor: index === activeDot ? '#0859C1' : '#cbd0d8',
                     }}
                   />
                 ))}

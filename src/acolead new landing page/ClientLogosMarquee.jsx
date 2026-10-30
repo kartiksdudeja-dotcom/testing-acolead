@@ -1,370 +1,80 @@
 import React from 'react';
-import { Box, Typography, Container } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
 
-// Real Client Logos from public/Client Logos directory
-const realClientLogos = [
-  {
-    id: 1,
-    name: 'Desai Estate',
-    logoSrc: process.env.PUBLIC_URL + '/Client Logos/Desai Estate.jpeg',
-    alt: 'Desai Estate Real Estate Logo',
-    href: 'https://www.desaiestates.com/',
-  },
-  {
-    id: 2,
-    name: 'Direct Resale',
-    logoSrc: process.env.PUBLIC_URL + '/Client Logos/Direct Resale.png',
-    alt: 'Direct Resale Logo',
-    href: 'https://directresale.com/',
-  },
-  {
-    id: 3,
-    name: 'Global Consultancy',
-    logoSrc: process.env.PUBLIC_URL + '/Client Logos/Globle consultancy.jpg',
-    alt: 'Global Consultancy Logo',
-    href: 'https://globalcn.in/',
-  },
-  {
-    id: 4,
-    name: 'Inspirational Homes',
-    logoSrc: process.env.PUBLIC_URL + '/Client Logos/Inspirational Homes.png',
-    alt: 'Inspirational Homes Logo',
-  },
-  {
-    id: 5,
-    name: 'KD Asset Builder',
-    logoSrc: process.env.PUBLIC_URL + '/Client Logos/Kd Asset Builder.png',
-    alt: 'KD Asset Builder Logo',
-    bigLogo: true,
-    href: 'https://kdassetbuilder.com/',
-  },
-  {
-    id: 6,
-    name: 'Mittal Brothers',
-    logoSrc: process.env.PUBLIC_URL + '/Client Logos/Mittal Brothers.png',
-    alt: 'Mittal Brothers Logo',
-    href: 'https://www.mittalbrothers.com/',
-  },
-  {
-    id: 7,
-    name: 'PropMentor',
-    logoSrc: process.env.PUBLIC_URL + '/Client Logos/PROPMENTORLOGO.jpeg',
-    alt: 'PropMentor Logo',
-  },
-  {
-    id: 8,
-    name: 'PotterzWheel Realty',
-    logoSrc: process.env.PUBLIC_URL + '/Client Logos/PotterzWheel Realty.jpeg',
-    alt: 'PotterzWheel Realty Logo',
-    href: 'https://potterzwheelrealty.com/',
-  },
-  {
-    id: 9,
-    name: 'Pune Property Guide',
-    logoSrc: process.env.PUBLIC_URL + '/Client Logos/Pune_Property_Guide__1_ (1).png',
-    alt: 'Pune Property Guide Logo',
-    href: 'https://punepropertyguide.com/',
-  },
-  {
-    id: 10,
-    name: 'Sukran Realty',
-    logoSrc: process.env.PUBLIC_URL + '/Client Logos/Sukran Realty.png',
-    alt: 'Sukran Realty Logo',
-    href: 'https://sukrangroup.com/',
-  },
-  {
-    id: 11,
-    name: 'LeadsInn',
-    logoSrc: process.env.PUBLIC_URL + '/Client Logos/leadsinn.jpeg',
-    alt: 'LeadsInn Logo',
-  },
-  {
-    id: 12,
-    name: 'White Collar Realty',
-    logoSrc: process.env.PUBLIC_URL + '/Client Logos/whitecollar.png',
-    alt: 'White Collar Realty Logo',
-  },
-  {
-    id: 13,
-    name: 'Shri Gurukeshav',
-    logoSrc: process.env.PUBLIC_URL + '/Client Logos/Shri_Gurukeshav _Logo (2).jpg',
-    alt: 'Shri Gurukeshav Logo',
-    
-    href: 'https://shrigurukeshavprojects.com/',
-  },
-  {
-    id: 14,
-    name: 'Jain Housing',
-    logoSrc: process.env.PUBLIC_URL + '/Client Logos/WhatsApp Image 2026-09-18 at 5.45.21 PM (1).jpeg',
-    alt: 'Jain Housing Logo',
-    href: 'https://jainhousing.com/',
-  },
-  {
-    id: 15,
-    name: 'Maharshi Group',
-    logoSrc: process.env.PUBLIC_URL + '/Client Logos/WhatsApp Image 2026-09-28 at 6.57.51 PM.jpeg',
-    alt: 'Maharshi Group Logo',
-    
-  },
+const clients = [
+    { name: 'Sukran Realty', src: '/Client Logos/Sukran Realty.png' },
+    { name: 'KD Asset Builder', src: '/Client Logos/Kd Asset Builder.png' },
+    { name: 'Mittal Brothers', src: '/Client Logos/Mittal Brothers.png' },
+    { name: 'White Collar Realty', src: '/Client Logos/whitecollar.png' },
+    { name: 'Inspirational Homes', src: '/Client Logos/Inspirational Homes.png' },
+    { name: 'Desai Estate', src: '/Client Logos/Desai Estate.jpeg' },
+    { name: 'Direct Resale', src: '/Client Logos/Direct Resale.png' },
+    { name: 'Global Consultancy', src: '/Client Logos/Globle consultancy.jpg' },
+    { name: 'PropMentor', src: '/Client Logos/PROPMENTORLOGO.jpeg' },
+    { name: 'PotterzWheel Realty', src: '/Client Logos/PotterzWheel Realty.jpeg' },
+    { name: 'Pune Property Guide', src: '/Client Logos/Pune_Property_Guide__1_ (1).png' },
+    { name: 'LeadsInn', src: '/Client Logos/leadsinn.jpeg' },
+    { name: 'Shri Gurukeshav', src: '/Client Logos/Shri_Gurukeshav _Logo (2).jpg' },
+    { name: 'Jain Housing', src: '/Client Logos/WhatsApp Image 2026-09-18 at 5.45.21 PM (1).jpeg' },
+    { name: 'Maharshi Group', src: '/Client Logos/WhatsApp Image 2026-09-28 at 6.57.51 PM.jpeg' },
 ];
 
-const ClientLogosMarquee = () => {
-  // Duplicate the array 3x for smooth, 100% seamless infinite horizontal looping
-  const marqueeItems = [...realClientLogos, ...realClientLogos, ...realClientLogos];
-
-  return (
-    <Box
-      component="section"
-      sx={{
-        width: '100%',
-        py: { xs: 5, md: 7 },
-        background: 'linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 50%, #F1F5F9 100%)',
-        borderTop: '1px solid #E2E8F0',
-        borderBottom: '1px solid #E2E8F0',
-        position: 'relative',
-        overflow: 'hidden',
-      }}
-    >
-      {/* Dynamic Keyframe and Hover CSS */}
-      <style>
-        {`
-          @keyframes marqueePipelineReal {
-            0% {
-              transform: translateX(0%);
+const ClientLogosMarquee = () => (
+    <Box component="section" aria-label="AcoLead client proof" sx={{ bgcolor: '#fff', borderTop: '1px solid #E7EDF5', borderBottom: '1px solid #E7EDF5', py: { xs: 2.5, md: 3.2 }, overflow: 'hidden' }}>
+        <style>{`
+            @keyframes acLeadLogoRun {
+                from { transform: translateX(0); }
+                to { transform: translateX(-50%); }
             }
-            100% {
-              transform: translateX(-33.333333%);
+            .aclead-logo-track {
+                display: flex;
+                align-items: center;
+                width: max-content;
+                animation: acLeadLogoRun 38s linear infinite;
+                will-change: transform;
             }
-          }
-
-          .marquee-pipeline-track {
-            display: flex;
-            align-items: center;
-            width: max-content;
-            animation: marqueePipelineReal 40s linear infinite;
-            will-change: transform;
-          }
-
-          /* Pause marquee animation when cursor hovers anywhere over the track */
-          .marquee-pipeline-container:hover .marquee-pipeline-track {
-            animation-play-state: paused !important;
-          }
-
-          /* Default logo card style: monochrome/grayscale when running */
-          .real-client-logo-card {
-            filter: grayscale(100%) opacity(0.65);
-            transition: filter 0.35s cubic-bezier(0.4, 0, 0.2, 1), 
-                        transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), 
-                        box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-                        border-color 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-                        background-color 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-          }
-
-          /* Hover state: cursor ON logo -> full vibrant color, stopped animation, pop up effect */
-          .real-client-logo-card:hover {
-            filter: grayscale(0%) opacity(1) !important;
-            transform: translateY(-6px) scale(1.08) !important;
-            box-shadow: 0 16px 32px -8px rgba(22, 119, 247, 0.25), 0 4px 12px rgba(0, 0, 0, 0.06) !important;
-            border-color: #1677F7 !important;
-            background-color: #FFFFFF !important;
-            z-index: 10;
-          }
-
-          .real-client-logo-img {
-            max-height: 90px;
-            max-width: 220px;
-            width: auto;
-            height: auto;
-            object-fit: contain;
-            transition: filter 0.35s ease, transform 0.35s ease;
-          }
-
-          /* Bigger logos for images with extra whitespace */
-          .real-client-logo-img.big-logo {
-            max-height: 150px;
-            max-width: 280px;
-          }
-
-          .real-client-logo-img.maharshi-logo {
-  max-height: 125px;
-  max-width: 220px;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-}
-            .real-client-logo-img.shri-gurukeshav-logo {
-           max-height: 127px;
-           max-width: 190px;
-           width: auto;
-           height: auto;
-           object-fit: contain;
-}
-
-          @media (max-width: 600px) {
-            .real-client-logo-img.shri-gurukeshav-logo {
-              max-height: 80px;
-              max-width: 190px;
+            .aclead-logo-group {
+                display: flex;
+                flex: 0 0 auto;
+                align-items: center;
+                gap: 12px;
+                padding-right: 12px;
             }
-          }
-
-            .real-client-logo-img.mittal-logo {
-            max-height: 260px;
-            max-width: 370px;
-}
-        `}
-      </style>
-
-      {/* Heading Section */}
-      <Container maxWidth="lg" sx={{ textAlign: 'center', mb: { xs: 3, md: 5 } }}>
-        <Box
-          sx={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: 1,
-            px: 2,
-            py: 0.6,
-            borderRadius: '50px',
-            backgroundColor: '#EFF6FF',
-            border: '1px solid #BFDBFE',
-            mb: 1.5,
-          }}
-        >
-          <Box
-            sx={{
-              width: 8,
-              height: 8,
-              borderRadius: '50%',
-              backgroundColor: '#1677F7',
-              boxShadow: '0 0 8px #1677F7',
-            }}
-          />
-          <Typography
-            variant="caption"
-            sx={{
-              color: '#1D4ED8',
-              fontWeight: 700,
-              letterSpacing: '1px',
-              textTransform: 'uppercase',
-              fontSize: '0.75rem',
-            }}
-          >
-            INDUSTRIES WE SERVE
-          </Typography>
-        </Box>
-
-        <Typography
-          variant="h3"
-          component="h2"
-          sx={{
-            fontWeight: 800,
-            fontSize: { xs: '1.3rem', sm: '2.1rem', md: '2.5rem' },
-            color: '#0F172A',
-            letterSpacing: '-0.02em',
-            mb: 1,
-          }}
-        >
-          "Trusted by Real Estate Businesses"
-        </Typography>
-
-        <Typography
-          variant="body1"
-          sx={{
-            color: '#64748B',
-            fontSize: { xs: '0.9rem', sm: '1.05rem' },
-            maxWidth: '650px',
-            mx: 'auto',
-          }}
-        >
-          Empowering top agencies, builders, and property consultants to capture and convert more leads efficiently.
-        </Typography>
-      </Container>
-
-      {/* Marquee Wrapper with Side Masks */}
-      <Box
-        className="marquee-pipeline-container"
-        sx={{
-          position: 'relative',
-          width: '100%',
-          overflow: 'hidden',
-          py: 1.5,
-        }}
-      >
-        {/* Left Edge Gradient Fade */}
-        <Box
-          sx={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            bottom: 0,
-            width: { xs: 60, md: 180 },
-            zIndex: 3,
-            background: 'linear-gradient(to right, #F8FAFC 0%, rgba(248, 250, 252, 0) 100%)',
-            pointerEvents: 'none',
-          }}
-        />
-
-        {/* Right Edge Gradient Fade */}
-        <Box
-          sx={{
-            position: 'absolute',
-            top: 0,
-            right: 0,
-            bottom: 0,
-            width: { xs: 60, md: 180 },
-            zIndex: 3,
-            background: 'linear-gradient(to left, #F1F5F9 0%, rgba(241, 245, 249, 0) 100%)',
-            pointerEvents: 'none',
-          }}
-        />
-
-        {/* Moving Pipeline Track */}
-        <Box className="marquee-pipeline-track">
-          {marqueeItems.map((client, index) => (
-            <Box
-              key={`${client.id}-${index}`}
-              className="real-client-logo-card"
-              component={client.href ? 'a' : 'div'}
-              href={/* href={client.href} */ undefined}
-              target={client.href ? '_blank' : undefined}
-              rel={client.href ? 'noopener noreferrer' : undefined}
-              aria-label={client.href ? `Visit ${client.name} website` : undefined}
-              sx={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                px: 4,
-                py: 2.5,
-                mx: 2,
-                borderRadius: '18px',
-                backgroundColor: '#FFFFFF',
-                border: '1px solid #E2E8F0',
-                minWidth: { xs: '220px', sm: '280px' },
-                height: { xs: '110px', sm: '130px' },
-                boxShadow: '0 2px 10px rgba(0, 0, 0, 0.03)',
-                userSelect: 'none',
-                cursor: 'default',
-                textDecoration: 'none',
-              }}
-            >
-              <img
-                src={client.logoSrc}
-                alt={client.alt}
-                className={`real-client-logo-img${client.bigLogo ? ' big-logo' : ''}${client.id === 6 ? ' mittal-logo' : ''}${client.id === 13 ? ' shri-gurukeshav-logo' : ''}${client.id === 15 ? ' maharshi-logo' : ''}`}
-                loading="lazy"
-                onError={(e) => {
-                  // Fallback to text if an image fails to load
-                  e.target.style.display = 'none';
-                  e.target.parentNode.innerText = client.name;
-                }}
-              />
+            .aclead-logo-card img {
+                filter: grayscale(1);
+                opacity: .68;
+                transition: filter .25s ease, opacity .25s ease, transform .25s ease;
+            }
+            .aclead-logo-card:hover img {
+                filter: grayscale(0);
+                opacity: 1;
+                transform: scale(1.04);
+            }
+        `}</style>
+        <Container maxWidth="lg" sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '270px minmax(0, 1fr)' }, gap: { xs: 2, md: 3.5 }, alignItems: 'center' }}>
+            <Box>
+                <Typography component="h2" sx={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#14243A', fontWeight: 800, fontSize: { xs: 21, md: 23 }, letterSpacing: '-.03em', lineHeight: 1.2 }}>
+                    Around 10 lakh leads
+                </Typography>
+                <Typography sx={{ color: '#536277', fontSize: 14, lineHeight: 1.45, mt: 0.4 }}>
+                    managed on AcoLead by agencies and builders.
+                </Typography>
             </Box>
-          ))}
-        </Box>
-      </Box>
-
+            <Box sx={{ overflow: 'hidden', py: 0.4 }}>
+                <Box className="aclead-logo-track">
+                    {[0, 1].map((group) => (
+                        <Box key={group} className="aclead-logo-group" aria-hidden={group === 1 ? 'true' : undefined}>
+                            {clients.map((client) => (
+                                <Box key={`${group}-${client.name}`} className="aclead-logo-card" aria-label={group === 0 ? client.name : undefined} sx={{ flex: '0 0 auto', width: { xs: 108, sm: 120 }, height: { xs: 64, sm: 70 }, px: 1.2, py: 1, border: '1px solid #E7EDF5', borderRadius: 1.5, bgcolor: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                    <Box component="img" src={`${process.env.PUBLIC_URL}${client.src}`} alt={group === 0 ? client.name : ''} loading="lazy" sx={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
+                                </Box>
+                            ))}
+                        </Box>
+                    ))}
+                </Box>
+            </Box>
+        </Container>
     </Box>
-  );
-};
+);
 
 export default ClientLogosMarquee;

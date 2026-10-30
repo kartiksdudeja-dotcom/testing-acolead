@@ -8,13 +8,18 @@ import SalesIntelligence from './SalesIntelligence';
 // import ImgSection from './ImgSection';
 import Mission from './Mission';
 import KeyFeatures from './KeyFeatures';
+import AudienceSolutions from './AudienceSolutions';
+import LaunchingSoon from './LaunchingSoon';
+import HomeFaq from './HomeFaq';
 import HorizontalBar from './HorizontalBar';
 // import BlogSection from './BlogSection';
 import BookDemo from './BookDemo';
 import Footer from './Footer';
 // import ProductModules from '../new components/acolead-modules/ProductModules';
 import ClientLogosMarquee from './ClientLogosMarquee';
+import ProblemComparison from './ProblemComparison';
 import MapPage from '../new components/map';
+import { pushTrackingEvent } from '../utils/tracking';
 
 const LayoutNew = () => {
     const aboutRef = useRef(null);
@@ -28,6 +33,19 @@ const LayoutNew = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const isRequestDemoRoute = location.pathname.replace(/\/+$/, '') === '/request-a-demo';
+    const isThankYouRoute = location.pathname.endsWith('/thank-you');
+    let followup = null;
+    if (isThankYouRoute && typeof sessionStorage !== 'undefined') {
+        try { followup = JSON.parse(sessionStorage.getItem('acolead_demo_followup') || 'null'); } catch (_) {}
+    }
+
+    useEffect(() => {
+        if (isThankYouRoute) {
+            let storedFollowup = null;
+            try { storedFollowup = JSON.parse(sessionStorage.getItem('acolead_demo_followup') || 'null'); } catch (_) {}
+            pushTrackingEvent('demo_thank_you_view', { follow_up_route: storedFollowup?.routeCall ? 'call_within_15_minutes' : storedFollowup?.routeWhatsapp ? 'recorded_demo_on_whatsapp' : 'sales_follow_up' });
+        }
+    }, [isThankYouRoute]);
 
     const handleScrollToForm = useCallback(() => {
         if (!isRequestDemoRoute) {
@@ -51,6 +69,13 @@ const LayoutNew = () => {
             }, 600);
         }
     }, [isRequestDemoRoute, navigate]);
+
+    const handleScrollToFeatures = useCallback(() => {
+        const element = featuesRef.current;
+        if (!element) return;
+        const top = element.getBoundingClientRect().top + window.pageYOffset - 80;
+        window.scrollTo({ top, behavior: 'smooth' });
+    }, []);
 
     useEffect(() => {
         if (isRequestDemoRoute) {
@@ -86,24 +111,26 @@ const LayoutNew = () => {
         }
     }, [location.search]);
 
-    if (location.pathname === '/request-a-demo/thank-you') {
+    if (isThankYouRoute) {
         return (
-            <Box sx={{ minHeight: '100vh', display: 'flex', alignItems: 'center', textAlign: 'center', bgcolor: '#F8FAFC' }}>
-                <Container maxWidth="sm">
+            <Box sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', bgcolor: '#F8FAFC', '@media (max-width:1023.95px)': { pb: 8 } }}>
+                <Header />
+                <Container maxWidth="sm" sx={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', textAlign: 'center', py: 8 }}>
                     <Typography variant="h3" sx={{ fontWeight: 800, color: '#0F172A', mb: 2 }}>
                         Thank you for your request
                     </Typography>
                     <Typography variant="body1" sx={{ color: '#475569', mb: 4 }}>
-                        Your demo request has been received. Our team will get back to you within 12 hours.
+                        {followup?.routeCall ? 'Your team has 5 or more salespeople and receives at least 50 new leads each month. Our team will call you within 15 minutes.' : followup?.routeWhatsapp ? 'Our team will prepare a recorded demo and send it to you on WhatsApp. You can also contact us directly at +91 91126 14174.' : 'Our team has received your request and will follow up with the next steps. You can contact us directly at +91 91126 14174.'}
                     </Typography>
                     <Button variant="contained" onClick={() => navigate('/')}>Back to AcoLead</Button>
                 </Container>
+                <Footer />
             </Box>
         );
     }
 
     return (
-        <Box display="flex" flexDirection="column" minHeight="100vh">
+        <Box display="flex" flexDirection="column" minHeight="100vh" sx={{ '@media (max-width:1023.95px)': { pb: 8 } }}>
             <Header
                 scrollToSection={(section) => {
                     const map = {
@@ -130,18 +157,18 @@ const LayoutNew = () => {
 
             {/* REAL ESTATE CRM SOFTWARE HERO (PLACED ABOVE) */}
             <Box ref={homeRef}>
-                <RealEstateHero handleScrollToForm={handleScrollToForm} />
+                <RealEstateHero handleScrollToForm={handleScrollToForm} handleScrollToFeatures={handleScrollToFeatures} />
             </Box>
 
-            {/* PREVIOUS EXISTING CODE & SECTIONS (PRESERVED INTACT) */}
+            <ClientLogosMarquee />
+
+            <ProblemComparison />
+
             <Box>
                 <HomePage handleScrollToForm={handleScrollToForm} />
             </Box>
 
             <SalesIntelligence />
-
-            {/* TRUSTED BY REAL ESTATE BUSINESSES CLIENT LOGO PIPELINE */}
-            <ClientLogosMarquee />
 
             {/* <ProductModules /> */}
 
@@ -158,6 +185,12 @@ const LayoutNew = () => {
             <Box ref={featuesRef}>
                 <KeyFeatures />
             </Box>
+
+            <AudienceSolutions />
+
+            <LaunchingSoon />
+
+            <HomeFaq />
 
             <HorizontalBar />
 

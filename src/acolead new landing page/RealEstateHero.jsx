@@ -1,681 +1,94 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Box, Typography, Button, useMediaQuery, useTheme, MobileStepper } from '@mui/material';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import TrackChangesOutlinedIcon from '@mui/icons-material/TrackChangesOutlined';
-import ScheduleOutlinedIcon from '@mui/icons-material/ScheduleOutlined';
-import ApartmentOutlinedIcon from '@mui/icons-material/ApartmentOutlined';
-import WhatsAppIcon from '@mui/icons-material/WhatsApp';
-import GroupsOutlinedIcon from '@mui/icons-material/GroupsOutlined';
-import BarChartOutlinedIcon from '@mui/icons-material/BarChartOutlined';
-import mainimg from './images/mainimg.png';
-import calender from './images/calender.png';
-import card from './images/card.png';
-import sales from './images/sales.png';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import React from 'react';
+import { Box, Button, Container, Typography } from '@mui/material';
+import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 
-const realEstatePillars = [
-    {
-        label: 'Lead Management',
-        icon: TrackChangesOutlinedIcon,
-        accent: '#1677F7',
-        description: 'Manage, track, and assign every lead across portals, campaigns, and sources in real-time.',
-    },
-    {
-        label: 'Follow-ups',
-        icon: ScheduleOutlinedIcon,
-        accent: '#F59E0B',
-        description: 'Automate follow-up reminders, task schedules, and site visit coordination effortlessly.',
-    },
-    {
-        label: 'Inventory',
-        icon: ApartmentOutlinedIcon,
-        accent: '#10B981',
-        description: 'Track live tower and unit availability, floor plans, and pricing in real time.',
-    },
-    {
-        label: 'WhatsApp',
-        icon: WhatsAppIcon,
-        accent: '#25D366',
-        description: 'Instant customer communication, brochures, and follow-ups directly on WhatsApp.',
-    },
-    {
-        label: 'Team Management',
-        icon: GroupsOutlinedIcon,
-        accent: '#8B5CF6',
-        description: 'Empower sales executives and channel partners with lead privacy and productivity tools.',
-    },
-    {
-        label: 'Reports',
-        icon: BarChartOutlinedIcon,
-        accent: '#EC4899',
-        description: 'Deep analytics on conversion funnels, agent performance, and closed opportunities.',
-    },
+const leadRows = [
+    { name: 'Priya Shah', source: '99acres · 3 BHK', status: 'Site visit today', tone: '#E6F4EA' },
+    { name: 'Rahul Mehta', source: 'Google · 1 BHK', status: 'Call due', tone: '#FFF2D8' },
+    { name: 'Anita Rao', source: 'WhatsApp · 2 BHK', status: 'New enquiry', tone: '#E9F1FC' },
 ];
 
-const RealEstateHero = ({ handleScrollToForm }) => {
-    const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-
-    const [activeStep, setActiveStep] = useState(0);
-    const [direction, setDirection] = useState(0);
-
-    const autoPlayTimer = useRef(null);
-
-    const [ref, inView] = useInView({
-        threshold: 0.2,
-    });
-
-    const slideInVariant = {
-        hidden: { opacity: 0, y: -50 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: { duration: 1.2, ease: 'easeOut' },
-        },
-    };
-
-    const carouselVariant = {
-        enter: (direction) => ({
-            x: direction > 0 ? 50 : -50,
-            opacity: 0,
-            scale: 0.96,
-        }),
-        center: {
-            x: 0,
-            opacity: 1,
-            scale: 1,
-            transition: {
-                duration: 0.5,
-                ease: [0.25, 0.1, 0.25, 1],
-            },
-        },
-        exit: (direction) => ({
-            x: direction < 0 ? 50 : -50,
-            opacity: 0,
-            scale: 0.96,
-            transition: {
-                duration: 0.35,
-                ease: [0.25, 0.1, 0.25, 1],
-            },
-        }),
-    };
-
-    // Auto-play transitions
-    useEffect(() => {
-        autoPlayTimer.current = setInterval(() => {
-            setDirection(1);
-            setActiveStep((prev) => (prev + 1) % realEstatePillars.length);
-        }, 4500);
-
-        return () => clearInterval(autoPlayTimer.current);
-    }, []);
-
-    const handleMouseEnter = () => {
-        clearInterval(autoPlayTimer.current);
-    };
-
-    const handleMouseLeave = () => {
-        autoPlayTimer.current = setInterval(() => {
-            setDirection(1);
-            setActiveStep((prev) => (prev + 1) % realEstatePillars.length);
-        }, 4500);
-    };
-
-    const handleNext = () => {
-        setDirection(1);
-        setActiveStep((prev) => (prev + 1) % realEstatePillars.length);
-        clearInterval(autoPlayTimer.current);
-        autoPlayTimer.current = setInterval(() => {
-            setDirection(1);
-            setActiveStep((prev) => (prev + 1) % realEstatePillars.length);
-        }, 4500);
-    };
-
-    const handleBack = () => {
-        setDirection(-1);
-        setActiveStep((prev) => (prev - 1 + realEstatePillars.length) % realEstatePillars.length);
-        clearInterval(autoPlayTimer.current);
-        autoPlayTimer.current = setInterval(() => {
-            setDirection(1);
-            setActiveStep((prev) => (prev + 1) % realEstatePillars.length);
-        }, 4500);
-    };
-
-    const handleDotClick = (index) => {
-        setDirection(index > activeStep ? 1 : -1);
-        setActiveStep(index);
-        clearInterval(autoPlayTimer.current);
-        autoPlayTimer.current = setInterval(() => {
-            setDirection(1);
-            setActiveStep((prev) => (prev + 1) % realEstatePillars.length);
-        }, 4500);
-    };
-
-    const activePillar = realEstatePillars[activeStep];
-    const PillarIcon = activePillar.icon;
-
-    const featureStrip = [
-        'Lead Management',
-        'Inventory Tracking',
-        'WhatsApp Integration',
-        'Team Management',
-        'Reports & Analytics',
-        'Site Visit Scheduling',
-        'Channel Partner Portal',
-        'Booking Management',
-    ];
-
-    const marqueeItems = [...featureStrip, ...featureStrip];
-
-    return (
-        <>
-            <Box
-                sx={{
-                    minHeight: '82vh',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    px: { xs: 2, sm: 3, md: 4 },
-                    py: { xs: 0, sm: 4, md: 5 },
-                    position: 'relative',
-                    overflow: 'hidden',
-                    borderBottom: '1px solid #E2E8F0',
-                    backgroundColor: '#eef4fb',
-                }}
-            >
-                <Box
-                    sx={{
-                        display: 'flex',
-                        flexDirection: isMobile ? 'column' : 'row',
-                        alignItems: { xs: 'flex-start', md: 'center' },
-                        justifyContent: 'center',
-                        maxWidth: '1240px',
-                        width: '100%',
-                        gap: { xs: 4, md: 5 },
-                        px: { xs: 0, sm: 0 },
-                    }}
-                >
-                {/* Left Content */}
-                <Box
-                    sx={{
-                        flex: 1.15,
-                        display: 'flex',
-                        flexDirection: 'column',
-                        gap: 1.8,
-                        textAlign: 'left',
-                        width: '100%',
-                        pt: { xs: 7, md: 0 },
-                        minHeight: isMobile ? 'auto' : '470px',
-                        justifyContent: 'center',
-                        position: 'relative',
-                    }}
-                    ref={ref}
-                    onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave}
-                >
-                    {/* Badge: REAL ESTATE CRM SOFTWARE */}
-                    <motion.div
-    variants={slideInVariant}
-    initial="hidden"
-    animate={inView ? 'visible' : 'hidden'}
-    style={{
-    position: 'relative',
-    top: 'auto',
-    left: 'auto',
-    width: isMobile ? 'auto' : '100%',
-    display: 'flex',
-    justifyContent: 'flex-start',
-    boxSizing: 'border-box',
-    zIndex: 2,
-}}
->
-                        <Box
-                            sx={{
-                                display: 'inline-flex',
-                                alignItems: 'center',
-                                gap: 1,
-                                px: 2,
-                                py: 0.6,
-                                borderRadius: '50px',
-                                bgcolor: 'rgba(22, 119, 247, 0.08)',
-                                border: '1px solid rgba(22, 119, 247, 0.22)',
-                                alignSelf: 'flex-start',
-                                mb: 0.5,
-                            }}
-                        >
-                            <Box
-                                sx={{
-                                    width: 8,
-                                    height: 8,
-                                    borderRadius: '50%',
-                                    bgcolor: '#1677F7',
-                                    boxShadow: '0 0 8px #1677F7',
-                                }}
-                            />
-                            <Typography
-                                sx={{
-                                    fontSize: { xs: '0.75rem', sm: '0.82rem' },
-                                    fontWeight: 800,
-                                    letterSpacing: '1px',
-                                    color: '#1677F7',
-                                    textTransform: 'uppercase',
-                                }}
-                            >
-                                REAL ESTATE CRM SOFTWARE
-                            </Typography>
-                        </Box>
-                    </motion.div>
-
-                    {/* Headline: Manage Every Real Estate Lead. Close Every Opportunity. */}
-                    <motion.div
-                        variants={slideInVariant}
-                        initial="hidden"
-                        animate={inView ? 'visible' : 'hidden'}
-                        transition={{ delay: 0.1, duration: 1 }}
-                    >
-                        <Typography
-                            variant="h1"
-                            sx={{
-                                fontWeight: 800,
-                                fontSize: isMobile ? '1.9rem' : '2.8rem',
-                                color: '#0F172A',
-                                lineHeight: 1.18,
-                                position: 'relative',
-                                top: { xs: 0, md: -5 },
-                                width: '100%',
-                                letterSpacing: '-0.02em',
-                                mb: 0.5,
-                            }}
-                        >
-                            Manage Every Real Estate Lead.{' '}
-                            <Box
-                                component="span"
-                                sx={{
-                                    color: '#1677F7',
-                                    display: 'inline',
-                                }}
-                            >
-                                Close Every Opportunity.
-                            </Box>
-                        </Typography>
-                    </motion.div>
-
-                    {/* Description: Acolead is a powerful Real Estate CRM... */}
-                    <motion.div
-                        variants={slideInVariant}
-                        initial="hidden"
-                        animate={inView ? 'visible' : 'hidden'}
-                        transition={{ delay: 0.2, duration: 1 }}
-                        style={{ display: 'block' }}
-                    >
-                        <Typography
-                            sx={{
-                                fontSize: isMobile ? '0.9rem' : '1.05rem',
-                                lineHeight: 1.65,
-                                color: '#475569',
-                                fontWeight: 450,
-                            }}
-                        >
-                            Acolead is a powerful Real Estate CRM that helps builders, developers, channel partners, and sales teams manage leads, follow-ups, inventory, teams, and customer communication — all in one place.
-                        </Typography>
-                    </motion.div>
-
-                    {/* 6 Features Interactive Animated Carousel Transition */}
-                    <Box
-                        sx={{
-                            display: 'block',
-                            position: 'relative',
-                            minHeight: '80px',
-                            my: 0.5,
-                        }}
-                    >
-                        <AnimatePresence mode="wait" custom={direction}>
-                            <motion.div
-                                key={activeStep}
-                                custom={direction}
-                                variants={carouselVariant}
-                                initial="enter"
-                                animate="center"
-                                exit="exit"
-                                style={{ position: 'relative' }}
-                            >
-                                <Box
-                                    sx={{
-                                        p: { xs: 1, md: 1.5 },
-                                        width: { xs: '92%', md: '100%' },
-                                        maxWidth: { xs: 380, md: 'none' },
-                                        mx: { xs: 'auto', md: 0 },
-                                        borderRadius: '12px',
-                                        bgcolor: 'rgba(255, 255, 255, 0.95)',
-                                        border: `1px solid ${activePillar.accent}35`,
-                                        boxShadow: '0 4px 14px rgba(0, 0, 0, 0.04)',
-                                    }}
-                                >
-                                    <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: 0.7, md: 1 }, mb: 0.25 }}>
-                                        <Box
-                                            sx={{
-                                                width: { xs: 22, md: 26 },
-                                                height: { xs: 22, md: 26 },
-                                                borderRadius: '50%',
-                                                display: 'flex',
-                                                alignItems: 'center',
-                                                justifyContent: 'center',
-                                                background: `linear-gradient(135deg, ${activePillar.accent} 0%, rgba(255,255,255,0.9) 100%)`,
-                                                boxShadow: `0 6px 18px ${activePillar.accent}55`,
-                                                border: '1px solid rgba(255,255,255,0.8)',
-                                            }}
-                                        >
-                                            <PillarIcon sx={{ fontSize: { xs: 13, md: 15 }, color: '#fff' }} />
-                                        </Box>
-                                        <Typography sx={{ fontWeight: 700, fontSize: { xs: '0.8rem', md: '0.9rem' }, color: activePillar.accent }}>
-                                            {activePillar.label}
-                                        </Typography>
-                                    </Box>
-                                    <Typography
-                                        sx={{
-                                            fontSize: isMobile ? '0.72rem' : '0.86rem',
-                                            lineHeight: 1.35,
-                                            color: '#334155',
-                                        }}
-                                    >
-                                        {activePillar.description}
-                                    </Typography>
-                                </Box>
-                            </motion.div>
-                        </AnimatePresence>
-                    </Box>
-
-                   
-
-                    {/* Interactive 6 Pillars Bar: Lead Management • Follow-ups • Inventory • WhatsApp • Team Management • Reports */}
-                    <Box
-                        sx={{
-                            display: { xs: 'none', md: 'flex' },
-                            alignItems: 'center',
-                            gap: 1.5,
-                            mt: 1.5,
-                            flexWrap: { xs: 'nowrap', md: 'wrap' },
-                            overflowX: { xs: 'auto', md: 'visible' },
-                            pb: { xs: 0.5, md: 0 },
-                            width: '100%',
-                        }}
-                    >
-                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.8, flexWrap: 'nowrap' }}>
-                                {realEstatePillars.map((item, index) => (
-                                    <Box
-                                        key={index}
-                                        onClick={() => handleDotClick(index)}
-                                        sx={{
-                                            px: { xs: 0.9, md: 1.3 },
-                                            py: { xs: 0.5, md: 0.5 },
-                                            borderRadius: '10px',
-                                            cursor: 'pointer',
-                                            bgcolor: index === activeStep ? item.accent : '#F1F5F9',
-                                            color: index === activeStep ? '#ffffff' : '#475569',
-                                            fontSize: { xs: '0.68rem', md: '0.74rem' },
-                                            fontWeight: index === activeStep ? 700 : 500,
-                                            whiteSpace: 'nowrap',
-                                            flexShrink: 0,
-                                            transition: 'all 0.25s ease',
-                                            boxShadow: index === activeStep ? `0 2px 8px ${item.accent}40` : 'none',
-                                            '&:hover': {
-                                                bgcolor: index === activeStep ? item.accent : '#E2E8F0',
-                                            },
-                                        }}
-                                    >
-                                        {item.label}
-                                    </Box>
-                                ))}
-                        </Box>
-                    </Box>
-                          
-                           {/* Button: [Book a Free Demo] */}
-                    <motion.div
-                        variants={slideInVariant}
-                        initial="hidden"
-                        animate={inView ? 'visible' : 'hidden'}
-                        transition={{ delay: 0.3, duration: 1 }}
-                    >
-                        <Button
-                            variant="contained"
-                            endIcon={<ArrowForwardIcon />}
-                            onClick={handleScrollToForm}
-                            sx={{
-                                alignSelf: 'flex-start',
-                                bgcolor: '#1677F7',
-                                textTransform: 'none',
-                                fontWeight: 700,
-                                px: isMobile ? 2 : 5,
-                                py: isMobile ? 1 : 1.5,
-                                color: 'white',
-                                fontSize: isMobile ? '0.9rem' : '1.05rem',
-                                borderRadius: 3,
-                                mt: 1,
-                                position: 'relative',
-                                top: 'auto',
-                                left: 'auto',
-                                width: isMobile ? 'auto' : '41%',
-                                boxShadow: '0 6px 20px rgba(22, 119, 247, 0.3)',
-                                
-                                overflow: 'hidden',
-                                '&::before': {
-                                    content: '""',
-                                    position: 'absolute',
-                                    top: 0,
-                                    left: '-100%',
-                                    width: '100%',
-                                    height: '100%',
-                                    background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent)',
-                                    transition: 'all 0.6s ease',
-                                },
-                                '&:hover': {
-                                    bgcolor: '#145ed6',
-                                    transform: 'translateY(-2px) scale(1.02)',
-                                    boxShadow: '0 8px 26px rgba(22, 119, 247, 0.4)',
-                                    '&::before': {
-                                        left: '100%',
-                                    },
-                                },
-                                '& .MuiButton-endIcon': {
-                                    transition: 'transform 0.3s ease',
-                                },
-                                '&:hover .MuiButton-endIcon': {
-                                    transform: 'translateX(4px)',
-                                },
-                            }}
-                        >
-                            Book a Free Demo
-                        </Button>
-                    </motion.div>
-
-
-                    {/* Mobile Stepper Controls */}
-                    
-                            
-                            
-                                
-                            
-                     
-                </Box>
-
-                {/* Right Column: Photos (mainimg with floating calender, sales, card) */}
-                <Box
-                    sx={{
-                        flex: 1,
-                        width: { xs: '100%', md: 'auto' },
-                        display: 'flex',
-                        justifyContent: 'flex-start',
-                        position: 'relative',
-                        overflow: 'visible',
-                        mt: { xs: 6, md: 0 },
-                        pr: { md: 1 },
-                    }}
-                >
-                    <Box
-                        sx={{
-                            position: 'relative',
-                            width: '100%',
-                            left: { xs: -10, md: -520 },
-                            top: { xs: -50, md: -100 },
-                            zIndex: 1,
-                            maxHeight: { xs: 600, md: 500 },
-                            maxWidth: 550,
-                            aspectRatio: '2000 / 800',
-                            overflow: 'visible',
-                        }}
-                    >
-                        <video
-                            ref={(el) => {
-                                if (el) {
-                                    el.muted = true;
-                                    el.playsInline = true;
-                                    el.play().catch(() => {});
-                                }
-                            }}
-                            autoPlay
-                            muted
-                            loop
-                            playsInline
-                            preload="auto"
-                           
-                            style={{
-                                display: 'block',
-                                width: isMobile ? '100%' : '300%',
-                                height: isMobile ? '200%' : '300%',
-                                objectFit: 'contain',
-                            }}
-                        >
-                            <source src="/images/bg1.mp4" type="video/mp4" />
-                            <source src="/images/bg1.webm" type="video/webm" />
-                        </video>
-                    </Box>
-
-                    {!isMobile && (
-                        <>
-                            {/* Floating Calendar Photo */}
-                            <Box
-                                
-                                alt="Calendar"
-                                sx={{
-                                    position: 'absolute',
-                                    bottom: -130,
-                                    left: -15,
-                                    width: 230,
-                                    height: 'auto',
-                                    zIndex: 2,
-                                    filter: 'drop-shadow(0 12px 24px rgba(0,0,0,0.12))',
-                                    animation: 'float 3.5s ease-in-out infinite',
-                                    '@keyframes float': {
-                                        '0%, 100%': { transform: 'translateY(0px)' },
-                                        '50%': { transform: 'translateY(-10px)' },
-                                    },
-                                }}
-                            />
-                            {/* Floating Sales Photo */}
-                            <Box
-                                
-                                alt="Sales"
-                                sx={{
-                                    position: 'absolute',
-                                    bottom: -50,
-                                    right: -25,
-                                    width: 195,
-                                    height: 'auto',
-                                    zIndex: 2,
-                                    filter: 'drop-shadow(0 12px 24px rgba(0,0,0,0.12))',
-                                    animation: 'float 3.5s ease-in-out infinite 1s',
-                                    '@keyframes float': {
-                                        '0%, 100%': { transform: 'translateY(0px)' },
-                                        '50%': { transform: 'translateY(-10px)' },
-                                    },
-                                }}
-                            />
-                            {/* Floating Card Photo */}
-                            <Box
-                                
-                                alt="Card"
-                                sx={{
-                                    position: 'absolute',
-                                    top: -15,
-                                    right: 5,
-                                    width: 185,
-                                    height: 'auto',
-                                    zIndex: 2,
-                                    filter: 'drop-shadow(0 12px 24px rgba(0,0,0,0.12))',
-                                    animation: 'float 3.5s ease-in-out infinite 2s',
-                                    '@keyframes float': {
-                                        '0%, 100%': { transform: 'translateY(0px)' },
-                                        '50%': { transform: 'translateY(-10px)' },
-                                    },
-                                }}
-                            />
-                        </>
-                    )}
-                </Box>
-            </Box>
+const MyDayCard = () => (
+    <Box sx={{ width: { xs: 170, sm: 190 }, p: 1.6, borderRadius: 3, bgcolor: '#fff', border: '1px solid #DCE6F2', boxShadow: '0 18px 45px rgba(12, 35, 68, .16)' }}>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1.4 }}>
+            <Typography sx={{ fontWeight: 800, fontSize: 13, color: '#14243A' }}>My Day</Typography>
+            <Box sx={{ width: 7, height: 7, borderRadius: '50%', bgcolor: '#3B9D1D' }} />
         </Box>
-
-        <Box
-            sx={{
-                width: '100%',
-                borderTop: '1px solid #E2E8F0',
-                borderBottom: '1px solid #E2E8F0',
-                backgroundColor: '#F8FAFC',
-                overflow: 'hidden',
-                position: 'relative',
-            }}
-        >
-            <Box
-                sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 2.5,
-                    px: { xs: 2, md: 4 },
-                    py: 1.25,
-                    minWidth: 'max-content',
-                    whiteSpace: 'nowrap',
-                    animation: 'featureScroll 22s linear infinite',
-                    '@keyframes featureScroll': {
-                        '0%': { transform: 'translateX(0)' },
-                        '100%': { transform: 'translateX(-50%)' },
-                    },
-                }}
-            >
-                {marqueeItems.map((item, index) => (
-                    <Box
-                        key={`${item}-${index}`}
-                        sx={{
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            gap: 1,
-                            fontSize: { xs: '0.8rem', md: '1rem' },
-                            color: '#475569',
-                            fontWeight: 500,
-                            flexShrink: 0,
-                        }}
-                    >
-                        <Box
-                            sx={{
-                                width: 8,
-                                height: 8,
-                                borderRadius: '50%',
-                                backgroundColor: '#2DD4BF',
-                                display: 'inline-block',
-                            }}
-                        />
-                        <Typography sx={{ color: '#475569', fontWeight: 500, lineHeight: 1.4 }}>
-                            {item}
-                        </Typography>
-                    </Box>
-                ))}
+        <Typography sx={{ fontSize: 10, color: '#6A788B', mb: 1 }}>4 leads need you first</Typography>
+        {leadRows.map((lead) => (
+            <Box key={lead.name} sx={{ p: 1, mb: 0.8, border: '1px solid #E7EDF5', borderRadius: 1.7 }}>
+                <Typography sx={{ fontSize: 10, fontWeight: 800, color: '#14243A' }}>{lead.name}</Typography>
+                <Typography sx={{ fontSize: 9, color: '#718096', mb: 0.6 }}>{lead.source}</Typography>
+                <Box sx={{ display: 'inline-flex', px: 0.7, py: 0.25, borderRadius: 4, bgcolor: lead.tone, color: '#31435B', fontSize: 8, fontWeight: 700 }}>{lead.status}</Box>
             </Box>
-        </Box>
+        ))}
+        <Button fullWidth size="small" sx={{ mt: 0.2, textTransform: 'none', fontWeight: 700, color: '#0859C1', fontSize: 10 }}>View my day</Button>
+    </Box>
+);
 
-        </>
-    );
-};
+const Dashboard = () => (
+    <Box sx={{ width: '100%', p: { xs: 1.4, sm: 2 }, borderRadius: { xs: 3, sm: 4 }, bgcolor: 'rgba(255,255,255,.96)', border: '1px solid #DCE6F2', boxShadow: '0 26px 70px rgba(12,35,68,.15)', backdropFilter: 'blur(12px)' }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 1.6 }}>
+            <Box>
+                <Typography sx={{ fontSize: { xs: 11, sm: 13 }, color: '#14243A', fontWeight: 800 }}>AcoLead Sales Dashboard</Typography>
+                <Typography sx={{ fontSize: 9, color: '#748198', mt: 0.3 }}>Project overview · October 2026</Typography>
+            </Box>
+            <Box sx={{ display: 'flex', gap: 0.5 }}><Box sx={{ width: 6, height: 6, borderRadius: '50%', bgcolor: '#D8E2EE' }} /><Box sx={{ width: 6, height: 6, borderRadius: '50%', bgcolor: '#D8E2EE' }} /><Box sx={{ width: 6, height: 6, borderRadius: '50%', bgcolor: '#D8E2EE' }} /></Box>
+        </Box>
+        <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: { xs: 0.7, sm: 1 }, mb: 1.5 }}>
+            {[['New leads', '128', '+18%'], ['Site visits', '42', 'This month'], ['Bookings', '12', '+3']].map(([label, value, detail]) => (
+                <Box key={label} sx={{ p: { xs: 0.8, sm: 1.2 }, border: '1px solid #E5ECF4', borderRadius: 2, bgcolor: '#FBFDFF' }}>
+                    <Typography sx={{ fontSize: { xs: 8, sm: 9 }, color: '#718096' }}>{label}</Typography>
+                    <Typography sx={{ fontSize: { xs: 15, sm: 19 }, lineHeight: 1.3, fontWeight: 800, color: '#14243A' }}>{value}</Typography>
+                    <Typography sx={{ fontSize: 8, color: '#3B9D1D', fontWeight: 700 }}>{detail}</Typography>
+                </Box>
+            ))}
+        </Box>
+        <Box sx={{ border: '1px solid #E5ECF4', borderRadius: 2, overflow: 'hidden' }}>
+            <Box sx={{ px: 1.2, py: 0.9, display: 'flex', justifyContent: 'space-between', bgcolor: '#F8FBFF' }}>
+                <Typography sx={{ fontSize: 9, fontWeight: 800, color: '#263851' }}>Recent enquiries</Typography>
+                <Typography sx={{ fontSize: 8, color: '#0859C1', fontWeight: 700 }}>View all</Typography>
+            </Box>
+            {leadRows.map((lead) => (
+                <Box key={lead.name} sx={{ px: 1.2, py: { xs: 0.8, sm: 1 }, display: 'grid', gridTemplateColumns: '1.1fr 1fr auto', alignItems: 'center', gap: 0.5, borderTop: '1px solid #EEF2F7' }}>
+                    <Typography sx={{ fontSize: { xs: 8, sm: 10 }, color: '#25364D', fontWeight: 700 }}>{lead.name}</Typography>
+                    <Typography sx={{ fontSize: { xs: 7, sm: 9 }, color: '#77859A' }}>{lead.source}</Typography>
+                    <Box sx={{ width: 7, height: 7, borderRadius: '50%', bgcolor: '#3B9D1D' }} />
+                </Box>
+            ))}
+        </Box>
+        <Box sx={{ mt: 1.4, height: { xs: 44, sm: 58 }, display: 'flex', alignItems: 'end', gap: 0.7, px: 1, borderRadius: 2, bgcolor: '#F8FBFF' }}>
+            {[35, 52, 43, 70, 55, 82, 62, 93, 72, 100, 78, 90, 64, 84].map((height, i) => <Box key={i} sx={{ flex: 1, height: `${height}%`, borderRadius: '3px 3px 0 0', bgcolor: i > 9 ? '#0859C1' : '#B9D4F4' }} />)}
+        </Box>
+    </Box>
+);
+
+const RealEstateHero = ({ handleScrollToForm, handleScrollToFeatures }) => (
+    <Box sx={{ position: 'relative', overflow: 'hidden', bgcolor: '#F2F6FC', borderBottom: '1px solid #E1E9F3' }}>
+        <Box aria-hidden="true" sx={{ position: 'absolute', inset: 0, opacity: 0.36, backgroundImage: 'linear-gradient(105deg, transparent 43%, rgba(255,255,255,.9) 43.2%, transparent 43.5%), linear-gradient(75deg, transparent 65%, rgba(8,89,193,.12) 65.2%, transparent 65.5%), linear-gradient(90deg, transparent 72%, rgba(255,255,255,.8) 72.2%, transparent 72.5%)', backgroundSize: '100% 100%', pointerEvents: 'none' }} />
+        <Container maxWidth="lg" sx={{ position: 'relative', py: { xs: 6, md: 8.5 }, display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1.05fr' }, gap: { xs: 5, md: 6 }, alignItems: 'center' }}>
+            <Box sx={{ maxWidth: 570 }}>
+                <Typography sx={{ color: '#0859C1', fontSize: { xs: 11, sm: 12 }, fontWeight: 800, letterSpacing: '.09em', textTransform: 'uppercase', mb: 2 }}>Real estate CRM for your whole sales team</Typography>
+                <Typography component="h1" sx={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#101C2E', fontWeight: 800, fontSize: { xs: 38, sm: 48, md: 56 }, lineHeight: 1.08, letterSpacing: '-.045em', mb: 2.2 }}>
+                    One CRM. Every Real Estate <Box component="span" sx={{ color: '#0859C1' }}>Opportunity.</Box>
+                </Typography>
+                <Box sx={{ width: 48, height: 4, bgcolor: '#3B9D1D', borderRadius: 3, mb: 2.2 }} />
+                <Typography sx={{ fontSize: { xs: 16, md: 18 }, lineHeight: 1.65, color: '#475569', mb: 3 }}>
+                    Leads from portals, Meta and walk-ins in one CRM that tells each salesperson who to call today.
+                </Typography>
+                <Box sx={{ display: 'flex', gap: 1.5, flexWrap: 'wrap', mb: 2.2 }}>
+                    <Button variant="contained" onClick={handleScrollToForm} endIcon={<ArrowForwardRoundedIcon />} sx={{ minHeight: 48, px: 2.6, borderRadius: 2, bgcolor: '#0859C1', fontWeight: 700, textTransform: 'none', '&:hover': { bgcolor: '#06489D' } }}>Book a Free Demo</Button>
+                    <Button variant="outlined" onClick={handleScrollToFeatures} sx={{ minHeight: 48, px: 2.4, borderRadius: 2, borderColor: '#B9CBE0', color: '#14243A', bgcolor: '#fff', fontWeight: 700, textTransform: 'none', '&:hover': { borderColor: '#0859C1', bgcolor: '#F8FBFF' } }}>See All Features</Button>
+                </Box>
+                <Typography sx={{ color: '#65748A', fontSize: 14 }}>For Builders, Channel Partner Agencies and Mandate Firms.</Typography>
+            </Box>
+            <Box sx={{ minWidth: 0, position: 'relative', py: { xs: 1, sm: 2 }, pr: { xs: 0, sm: 4 } }}>
+                <Box sx={{ position: 'absolute', width: '70%', height: '70%', top: '10%', right: '8%', borderRadius: '50%', bgcolor: 'rgba(29,116,222,.10)', filter: 'blur(34px)' }} />
+                <Box sx={{ position: 'relative', transform: { xs: 'none', sm: 'perspective(1200px) rotateY(-3deg)' } }}><Dashboard /></Box>
+                <Box sx={{ position: 'absolute', right: { xs: -4, sm: -3 }, bottom: { xs: -25, sm: -18 }, zIndex: 2 }}><MyDayCard /></Box>
+            </Box>
+        </Container>
+    </Box>
+);
 
 export default RealEstateHero;

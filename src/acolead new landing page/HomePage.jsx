@@ -2,10 +2,10 @@ import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react'
 import { Box, Typography, Button, useMediaQuery, useTheme, MobileStepper } from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import bg from './images/bg.png';
-import calender from './images/calender.png';
-import card from './images/card.png';
-import sales from './images/sales.png';
+import bg from './images/bg.webp';
+import calender from './images/calender.webp';
+import card from './images/card.webp';
+import sales from './images/sales.webp';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { leadCaputureAddon } from '../new components/acolead-modules/license.types';
@@ -19,11 +19,11 @@ const HomePage = ({ handleScrollToForm }) => {
         {
             id: leadCaputureAddon.WEBSITE,
             label: 'Website Builder',
-            accent: '#20B8C8',
+            accent: '#0859C1',
             mainPageHeading: (
                 <>
                     Your Properties.{' '}
-                    <Box component="span" sx={{ color: '#1677F7' }}>Your Website.</Box>{' '}
+                    <Box component="span" sx={{ color: '#0859C1' }}>Your Website.</Box>{' '}
                     Zero Maintenance.
                 </>
             ),
@@ -176,7 +176,7 @@ const HomePage = ({ handleScrollToForm }) => {
                             variant="h4"
                             sx={{
                                 fontWeight: 700,
-                                fontSize: isMobile ? '1.5rem' : '2.8rem',
+                                fontSize: isMobile ? '1.75rem' : '3.5rem',
                                 color: '#000',
                                 lineHeight: 1.2,
                                 mb: 1,
@@ -223,7 +223,7 @@ const HomePage = ({ handleScrollToForm }) => {
                             endIcon={<ArrowForwardIcon />}
                             sx={{
                                 alignSelf: isMobile ? 'center' : 'flex-start',
-                                bgcolor: '#1677F7',
+                                bgcolor: '#0859C1',
                                 textTransform: 'none',
                                 fontWeight: 700,
                                 px: isMobile ? 3 : 5,
@@ -232,7 +232,7 @@ const HomePage = ({ handleScrollToForm }) => {
                                 fontSize: isMobile ? '0.9rem' : '1.05rem',
                                 borderRadius: 3,
                                 mt: 1,
-                                boxShadow: '0 4px 16px rgba(22, 119, 247, 0.25)',
+                                boxShadow: '0 4px 16px rgba(8, 89, 193, 0.25)',
                                 position: 'relative',
                                 overflow: 'hidden',
                                 '&::before': {
@@ -246,9 +246,9 @@ const HomePage = ({ handleScrollToForm }) => {
                                     transition: 'all 0.6s ease',
                                 },
                                 '&:hover': {
-                                    bgcolor: '#145ed6',
+                                    bgcolor: '#06489D',
                                     transform: 'translateY(-2px) scale(1.02)',
-                                    boxShadow: '0 6px 24px rgba(22, 119, 247, 0.35)',
+                                    boxShadow: '0 6px 24px rgba(8, 89, 193, 0.35)',
                                     transition: 'all 0.3s ease',
                                     '&::before': {
                                         left: '100%',
@@ -291,7 +291,7 @@ const HomePage = ({ handleScrollToForm }) => {
                                     transition: 'all 0.3s ease',
                                     '&:hover': {
                                         backgroundColor: '#f5f7fa',
-                                        borderColor: '#1677F7',
+                                        borderColor: '#0859C1',
                                         transform: 'scale(1.05)',
                                         boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
                                     },
@@ -350,7 +350,7 @@ const HomePage = ({ handleScrollToForm }) => {
                                     transition: 'all 0.3s ease',
                                     '&:hover': {
                                         backgroundColor: '#f5f7fa',
-                                        borderColor: '#1677F7',
+                                        borderColor: '#0859C1',
                                         transform: 'scale(1.05)',
                                         boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
                                     },
@@ -457,7 +457,7 @@ const HomePage = ({ handleScrollToForm }) => {
                     >
                         <Box
                             component="video"
-                            src="/AcoLead%20Instagram%20Lead%20Gen%20Motion%20Graphic%20(1).mp4"
+                            src="/AcoLead-Instagram-Lead-Gen-compressed.mp4"
                             autoPlay
                             muted
                             loop

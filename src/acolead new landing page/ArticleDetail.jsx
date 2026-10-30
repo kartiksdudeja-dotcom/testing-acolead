@@ -144,7 +144,7 @@ const LexicalRenderer = ({ content }) => {
             href={child.url}
             target="_blank"
             rel="noopener noreferrer"
-            sx={{ color: '#1677F7', textDecoration: 'none', fontWeight: 500, '&:hover': { textDecoration: 'underline' } }}
+            sx={{ color: '#0859C1', textDecoration: 'none', fontWeight: 500, '&:hover': { textDecoration: 'underline' } }}
           >
             {renderChildren(child.children)}
           </MuiLink>
@@ -233,7 +233,7 @@ const LexicalRenderer = ({ content }) => {
       if (blockType === 'banner') {
         const style = node.fields?.style || 'info';
         const bannerColors = {
-          info: { bg: '#f0f7ff', border: '#1677F7', icon: 'ℹ️' },
+          info: { bg: '#f0f7ff', border: '#0859C1', icon: 'ℹ️' },
           warning: { bg: '#fffbeb', border: '#f59e0b', icon: '⚠️' },
           error: { bg: '#fef2f2', border: '#ef4444', icon: '❌' },
           success: { bg: '#f0fdf4', border: '#22c55e', icon: '✅' },
@@ -371,13 +371,13 @@ const LexicalRenderer = ({ content }) => {
             display: 'flex',
             gap: 2,
             backgroundColor: '#f0f7ff',
-            borderLeft: '4px solid #1677F7',
+            borderLeft: '4px solid #0859C1',
             borderRadius: '0 12px 12px 0',
             p: 3,
             my: 4,
           }}
         >
-          <FormatQuoteIcon sx={{ color: '#1677F7', fontSize: '2.5rem', mt: -0.5 }} />
+          <FormatQuoteIcon sx={{ color: '#0859C1', fontSize: '2.5rem', mt: -0.5 }} />
           <Typography
             sx={{
               fontStyle: 'italic',
@@ -494,7 +494,7 @@ const TableOfContents = ({ content }) => {
     >
       {/* Header */}
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.2, mb: 2, px: 0.5 }}>
-        <DescriptionOutlinedIcon sx={{ color: '#1677F7', fontSize: '1.25rem' }} />
+        <DescriptionOutlinedIcon sx={{ color: '#0859C1', fontSize: '1.25rem' }} />
         <Typography
           sx={{
             fontWeight: 800,
@@ -546,7 +546,7 @@ const TableOfContents = ({ content }) => {
                   mr: 1.5,
                   flexShrink: 0,
                   backgroundColor: isActive ? '#dbeafe' : '#f1f5f9',
-                  color: isActive ? '#1677F7' : '#64748b',
+                  color: isActive ? '#0859C1' : '#64748b',
                 }}
               >
                 {numberLabel}
@@ -557,7 +557,7 @@ const TableOfContents = ({ content }) => {
                 sx={{
                   fontSize: '0.875rem',
                   fontWeight: isActive ? 700 : 500,
-                  color: isActive ? '#1677F7' : '#475569',
+                  color: isActive ? '#0859C1' : '#475569',
                   lineHeight: 1.35,
                 }}
               >
@@ -615,7 +615,7 @@ const ShareThisArticle = () => {
     >
       {/* Header */}
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.2, mb: 2, px: 0.5 }}>
-        <ShareOutlinedIcon sx={{ color: '#1677F7', fontSize: '1.25rem' }} />
+        <ShareOutlinedIcon sx={{ color: '#0859C1', fontSize: '1.25rem' }} />
         <Typography
           sx={{
             fontWeight: 800,
@@ -694,7 +694,7 @@ const ShareThisArticle = () => {
             onClick={handleCopyLink}
             sx={{
               backgroundColor: '#f1f5f9',
-              color: copied ? '#1677F7' : '#64748b',
+              color: copied ? '#0859C1' : '#64748b',
               border: '1px solid #e2e8f0',
               width: 40,
               height: 40,
@@ -783,7 +783,7 @@ const RelatedInsights = ({ postRelatedPosts, currentPostId, limit = 3 }) => {
           sx={{
             fontWeight: 600,
             fontSize: '0.825rem',
-            color: '#1677F7',
+            color: '#0859C1',
             cursor: 'pointer',
             display: 'flex',
             alignItems: 'center',
@@ -813,7 +813,7 @@ const RelatedInsights = ({ postRelatedPosts, currentPostId, limit = 3 }) => {
                 alignItems: 'flex-start',
                 gap: 2,
                 transition: 'all 0.2s',
-                '&:hover .title': { color: '#1677F7' },
+                '&:hover .title': { color: '#0859C1' },
               }}
             >
               {/* Graphic Thumbnail */}
@@ -921,7 +921,7 @@ const CtaBox = ({ onBookDemo }) => {
           height: 44,
           borderRadius: '10px',
           backgroundColor: '#dbeafe',
-          color: '#1677F7',
+          color: '#0859C1',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -963,7 +963,7 @@ const CtaBox = ({ onBookDemo }) => {
         onClick={onBookDemo}
         fullWidth
         sx={{
-          backgroundColor: '#1677F7',
+          backgroundColor: '#0859C1',
           color: '#ffffff',
           fontWeight: 700,
           textTransform: 'none',
@@ -973,7 +973,7 @@ const CtaBox = ({ onBookDemo }) => {
           boxShadow: 'none',
           '&:hover': {
             backgroundColor: '#1163d4',
-            boxShadow: '0 4px 12px rgba(22, 119, 247, 0.25)',
+            boxShadow: '0 4px 12px rgba(8, 89, 193, 0.25)',
           },
         }}
       >
@@ -1024,7 +1024,7 @@ const ArticleDetail = () => {
   if (loading) {
     return (
       <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '600px' }}>
-        <CircularProgress sx={{ color: '#1677F7' }} />
+        <CircularProgress sx={{ color: '#0859C1' }} />
       </Box>
     );
   }
@@ -1045,7 +1045,7 @@ const ArticleDetail = () => {
           <Button
             startIcon={<ArrowBackIcon />}
             onClick={() => navigate('/?section=insights')}
-            sx={{ color: '#1677F7', textTransform: 'none', fontWeight: 600 }}
+            sx={{ color: '#0859C1', textTransform: 'none', fontWeight: 600 }}
           >
             Back to Insights
           </Button>
@@ -1085,7 +1085,7 @@ const ArticleDetail = () => {
                   px: 1.5,
                   py: 0.5,
                   backgroundColor: '#e0edff',
-                  color: '#1677F7',
+                  color: '#0859C1',
                   borderRadius: '6px',
                   fontSize: '0.75rem',
                   fontWeight: 700,
