@@ -8,7 +8,6 @@ const SdkIntegration = () => {
     const theme = useTheme();
     const navigate = useNavigate();
     const isMobile = useMediaQuery(theme.breakpoints.down("sm", "xs"));
-    const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
     const {trackEvent}=useMixpanel()
     const contentData = [
         {

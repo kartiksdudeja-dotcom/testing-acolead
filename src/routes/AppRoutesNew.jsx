@@ -1,10 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
-import Routingflexibility from '../new components/feature components/Routingflexibility';
 
-import DocumentFlexibility from '../new components/feature components/DocumentFlexibility';
-import SdkIntegration from '../new components/feature components/SdkIntegration';
-import DataCollectionNew from '../new components/feature components/DataCollectionNew';
 import Refund from '../new components/footer pages/Refund';
 import RealEstate from '../new components/feature components/RealEstate';
 import SupplyChain from '../new components/feature components/SupplyChain';
@@ -12,7 +8,6 @@ import BackgroundVerification from '../new components/feature components/Backgro
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import '../styled component/AppRoutesNew.css';
 import MultiuserWorkflow from '../new components/feature components/MultiuserWorkflow';
-import MainLayout from '../parent components/MainLayout';
 import LayoutNew from '../acolead new landing page/LayoutNew';
 // import ArticleDetail from '../acolead new landing page/ArticleDetail';
 import PrivacyAcolead from '../acolead new landing page/footer pages/PrivacyAcolead';

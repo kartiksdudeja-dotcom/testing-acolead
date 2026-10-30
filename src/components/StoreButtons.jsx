@@ -1,4 +1,4 @@
-import { Button, Box, Typography } from '@mui/material';
+import { Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { ReactComponent as AppStoreSVG } from '../assets/images/AppStoreButtonIcon.svg';
 import { ReactComponent as PlayStoreSVG } from '../assets/images/PlayStoreButtonIcon.svg';

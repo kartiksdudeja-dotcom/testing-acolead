@@ -1,14 +1,10 @@
 import React from 'react';
-import { Box, Grid, Container, Typography, IconButton, useTheme, Button, Divider, useMediaQuery, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { Box, Grid, Container, Typography, useTheme, Button, Divider, useMediaQuery, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import logo from '../../assets/acoflow.png'
 import img from '../../assets/sign.jpeg'
 import { useMixpanel } from '../../mixpanel/MixpanelContext';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CheckOutlinedIcon from '@mui/icons-material/CheckOutlined';
-import { scroller } from 'react-scroll';
-import KeyFeaturesNew from '../KeyFeaturesNew';
 import Challenges from './Challenges';
 import HowItWorks from './works components/HowItWorks';
 import AnimatedTypographyComman from '../../styled component/AnimatedTypographyComman';
@@ -78,15 +74,6 @@ const MultiuserWorkflow = () => {
         trackEvent('move to home page')
     };
 
-    const handleBookDemo = () => {
-        navigate('/');
-        setTimeout(() => {
-            scroller.scrollTo('contactForm', {
-                duration: 1200,
-                smooth: true,
-            });
-        }, 500);
-    };
     const text1='Secure & Automated Multi-User Signature Workflow'
     const text2=''
 

@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Grid, Typography, ToggleButton, ToggleButtonGroup, Box, useTheme, Button, useMediaQuery } from '@mui/material';
-import Dinero from 'dinero.js';
 import Free from '../Custom Icons/Free';
 import Standered from '../Custom Icons/Standered';
 import Proffesional from '../Custom Icons/Proffesional';
@@ -56,37 +55,12 @@ const Plans = ({ selectedCountry }) => {
     const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
     const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
     const [selectedPlan, setSelectedPlan] = useState('monthly');
-    const [currencySymbol, setCurrencySymbol] = useState('₹');
-    const [updatedPlanData, setUpdatedPlanData] = useState(planData);
 
     const handleToggleChange = (event, newPlan) => {
         if (newPlan) {
             setSelectedPlan(newPlan);
         }
     };
-    const exchangeRates = {
-        US: 1,
-        IN: 86.41,
-        GB: 0.75,
-        JP: 110,
-        CA: 1.25,
-        AU: 1.35,
-        EU: 0.85,
-        CN: 6.5,
-        KR: 1300,
-        SG: 1.35,
-        RU: 75,
-        SA: 3.75,
-        AE: 3.67,
-        MX: 19.5,
-        BR: 5.2,
-        ZA: 18.5,
-        TH: 33.2,
-        MY: 4.2,
-        ID: 14.5
-    };
-
-
     // useEffect(() => {
     //     const currencyMap = {
     //         IN: '₹',  // Indian Rupee
@@ -215,7 +189,7 @@ const Plans = ({ selectedCountry }) => {
                             </Box>
 
                             {
-                                plan.title == 'Free' ? (
+                                plan.title === 'Free' ? (
                                     <Typography variant="h6" sx={{ fontWeight: 'bold', marginTop: 1 }}>
                                         (1 Month free)
 

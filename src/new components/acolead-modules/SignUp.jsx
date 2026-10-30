@@ -1,13 +1,9 @@
-import { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
+import { forwardRef, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Alert, Backdrop, Box, Button, Chip, CircularProgress, Container, FormControl, FormHelperText, FormLabel, Grid2, InputBase, Paper, Stack, TextField, Typography, alpha, inputBaseClasses, styled, useTheme } from '@mui/material';
 import AutoAwesomeOutlinedIcon from '@mui/icons-material/AutoAwesomeOutlined';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
-import PhoneInTalkOutlinedIcon from '@mui/icons-material/PhoneInTalkOutlined';
 import { acoLeadCrmShortLogo } from '../../assets';
-import WhatsAppIcon from '@mui/icons-material/WhatsApp';
-import { leadCaputureAddon, PlanType } from './license.types';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import { MuiTelInput } from 'mui-tel-input';
@@ -194,7 +190,7 @@ const RegistrationForm = forwardRef(({ features }, ref) => {
     const primary = theme.palette.primary.main;
 
     const [otpSent, setOtpSent] = useState(false);
-    const [isMobileVerified, setIsMobileVerified] = useState(false);
+    const [isMobileVerified] = useState(false);
     const [isSendingOtp, setIsSendingOtp] = useState(false);
     const [isVerifying, setIsVerifying] = useState(false);
     const [apiError, setApiError] = useState(null);
@@ -1210,12 +1206,12 @@ const CustomOTPInput = forwardRef(
 
         const inputRefs = useRef(Array(length).fill(null));
 
-        useEffect(() => { autoFocus && focusInput(0); }, [autoFocus]);
-
         const focusInput = useCallback((index) => {
             const target = inputRefs.current[index];
             target?.focus();
         }, []);
+
+        useEffect(() => { autoFocus && focusInput(0); }, [autoFocus, focusInput]);
 
         const selectInput = useCallback((index) => {
             const target = inputRefs.current[index];

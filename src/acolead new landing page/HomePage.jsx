@@ -3,9 +3,6 @@ import { Box, Typography, Button, useMediaQuery, useTheme, MobileStepper } from 
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import bg from './images/bg.webp';
-import calender from './images/calender.webp';
-import card from './images/card.webp';
-import sales from './images/sales.webp';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { leadCaputureAddon } from '../new components/acolead-modules/license.types';

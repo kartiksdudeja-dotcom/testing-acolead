@@ -2,14 +2,12 @@ import React from 'react'
 import { Box } from "@mui/material";
 import Footer from '../new components/Footer';
 import KeyFeaturesNew from '../new components/KeyFeaturesNew';
-import HeaderNav from '../components/HeaderNav';
 import MainHeader from './MainHeader';
 import Homepage from './Homepage';
 import Products from './Products';
 import img1 from '../assets/acoflowimg.jpg';
 import img2 from '../assets/newworkflow.jpg';
 import img3 from '../assets/DocumentLibrary.jpg'
-import Plans from '../new components/pricing/Plans';
 const MainLayout = () => {
     return (
         <Box

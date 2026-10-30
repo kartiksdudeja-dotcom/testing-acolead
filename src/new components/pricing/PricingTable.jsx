@@ -32,8 +32,6 @@ const pricedata = [
 
 ];
 
-const headers = [' ', 'Free', 'Standard', 'Professional'];
-
 const PricingTable = () => {
   const [showAll, setShowAll] = useState(false);
 

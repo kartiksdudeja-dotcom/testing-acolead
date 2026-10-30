@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box, useMediaQuery ,Button} from "@mui/material";
+import { Box, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { useMixpanel } from "../mixpanel/MixpanelContext";
 

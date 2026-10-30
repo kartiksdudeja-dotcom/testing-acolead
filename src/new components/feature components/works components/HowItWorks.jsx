@@ -5,7 +5,6 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 const HowItWorks = ({ data, data1, data2, data3, flag }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm", "xs"));
-  const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
   return (
     <Container maxWidth="lg">
       <Grid container spacing={1}>

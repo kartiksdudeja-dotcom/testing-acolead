@@ -1,11 +1,10 @@
-import { Box, Grid, Stack, Button, IconButton, Drawer, useMediaQuery, Typography, Divider, Menu, MenuItem } from '@mui/material';
+import { Box, Grid, Stack, Button, IconButton, useMediaQuery, Typography, Menu, MenuItem } from '@mui/material';
 import { useState } from 'react';
 import { useTheme } from '@mui/material/styles';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link as RouterLink } from 'react-router-dom';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import MyDrawer from './MyDrawer';
-import { Link } from 'react-scroll';
 
 
 function HeaderNav() {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Typography, Paper, Box, Button, useMediaQuery, useTheme } from '@mui/material'
+import { Grid, Typography, Box, Button, useMediaQuery, useTheme } from '@mui/material'
 import EnterPriceIcon from '../Custom Icons/EnterPriceIcon'
 import { scroller } from 'react-scroll'
 

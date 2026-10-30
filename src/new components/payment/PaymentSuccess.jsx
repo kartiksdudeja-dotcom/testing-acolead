@@ -14,20 +14,6 @@ to{
 }
 `;
 
-const scaleIn = keyframes`
-0%{
-    opacity:0;
-    transform:scale(.4);
-}
-70%{
-    transform:scale(1.12);
-}
-100%{
-    opacity:1;
-    transform:scale(1);
-}
-`;
-
 const confetti = keyframes`
 0%{
     opacity:0;

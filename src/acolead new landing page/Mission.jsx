@@ -1,7 +1,6 @@
 import React from 'react';
 import { Box, Grid, Stack, Typography, useMediaQuery, useTheme } from '@mui/material';
 import iconsimg from './images/icons.webp';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CommanSvg from './icons/CommanSvg';
 import EmpowermentIcon from './icons/EmpowermentIcon';
 import Innovation from './icons/Innovation';

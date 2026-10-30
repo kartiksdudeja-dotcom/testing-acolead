@@ -7,12 +7,6 @@ export const checkIsIOS = (userAgent) => {
 
 export const checkIsAndroid = () => /android/i.test(navigator.userAgent);
 
-// Detect if running in standalone mode (PWA)
-const isStandalone = window.navigator.standalone || window.matchMedia('(display-mode: standalone)').matches;
-
-// If standalone, you might want different behavior
-const isPWA = isStandalone;
-
 export const APP_URLS = {
     // coalitionifyWebsite: "https://www.coalitionify.com",
     coalitionifyWebsite: "https://coalitionify.com/",

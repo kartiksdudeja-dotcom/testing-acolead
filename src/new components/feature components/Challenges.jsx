@@ -2,13 +2,6 @@ import React from 'react'
 import { Grid, Box, Typography } from '@mui/material'
 import FirstKey from '../Custom Icons/FirstKey'
 import Key from '../Custom Icons/Key'
-const features = [
-  { title: 'System Access', subtitle: 'External brokers don’t have direct CRM access.' },
-  { title: 'Unqualified Leads', subtitle: 'Manual verification wastes time on unqualified leads.' },
-  { title: 'Eligibility Check', subtitle: 'No financial eligibility checks, leading to unverified buyer data.' },
-  { title: 'Lead Intent', subtitle: 'Lead intent is unknown, making follow-ups inefficient.' }
-]
-
 const Challenges = ({keychallenges}) => {
   return (
     <Box bgcolor="#1677F7" py={3} mt={7} position={'relative'} mb={7}>

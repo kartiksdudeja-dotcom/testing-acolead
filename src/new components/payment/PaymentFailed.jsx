@@ -1,6 +1,5 @@
 import { Box, Button, Chip, CircularProgress, Container, Paper, Stack, Typography } from "@mui/material";
 import ErrorOutlineRoundedIcon from "@mui/icons-material/ErrorOutlineRounded";
-import RefreshRoundedIcon from "@mui/icons-material/RefreshRounded";
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 import { keyframes } from "@mui/system";
 import AccessTimeRoundedIcon from "@mui/icons-material/AccessTimeRounded";

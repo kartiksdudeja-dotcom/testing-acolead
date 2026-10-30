@@ -4,11 +4,10 @@ import { phonePeHelpers } from "./phonepe.constants";
 import PaymentFailed, { PaymentPending } from "./PaymentFailed";
 import PaymentSuccess from "./PaymentSuccess";
 import { BACKEND_URL, cpcrmApi } from "../../redux/cpcrm.api";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 export default function PaymentResponseDialog() {
-  const navigate = useNavigate();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   const [paymentResponseDialog, setPaymentResponseDialog] = useState(null);
 

@@ -1,6 +1,5 @@
 import { useMediaQuery, useTheme, Box, Button,Container } from '@mui/material';
 import React from 'react'
-import AnimatedTypography from '../styled component/AnimatedTypography';
 import MainTypography from '../styled component/MainTypograpghy';
 import ImageSlider from '../components/ImageSlider';
 import img1 from '../assets/banner images/banner1.jpg';

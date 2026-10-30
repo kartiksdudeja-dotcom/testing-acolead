@@ -40,7 +40,6 @@ import {
   Smartphone,
   Sparkles,
   UserPlus,
-  UsersRound,
   Wallet,
 } from 'lucide-react';
 import { Link as RouterLink } from 'react-router-dom';

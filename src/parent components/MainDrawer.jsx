@@ -1,15 +1,10 @@
 import { useState } from 'react';
 import { Box, Button, Divider, Drawer, Stack, Collapse,Typography } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
-import HomeIcon from '@mui/icons-material/Home';
-import InfoIcon from '@mui/icons-material/Info';
 import StarIcon from '@mui/icons-material/Star';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import ContactMailIcon from '@mui/icons-material/ContactMail';
-import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
-import logo from '../assets/acoflow.png';
-import { Link } from 'react-scroll';
 
 const MainDrawer = ({ drawerOpen, handleDrawerToggle }) => {
     const [isProductsOpen, setProductsOpen] = useState(false);

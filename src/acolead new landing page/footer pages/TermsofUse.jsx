@@ -3,10 +3,6 @@ import {
     Box,
     Container,
     Typography,
-    List,
-    ListItem,
-    ListItemText,
-    ListItemIcon,
     useMediaQuery,
     useTheme,
 } from "@mui/material";
@@ -17,58 +13,8 @@ import { Link } from '@mui/material';
 const TermsofUse = () => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-    const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
     const navigate = useNavigate();
     const { trackEvent } = useMixpanel();
-    const sections = [
-        {
-            title: "1. Platform Use",
-            subtitles: [
-                "The Platform enables users to build dynamic forms, collect data, add payment fields, gather electronic signatures, and integrate via SDKs.",
-                "Users are solely responsible for the accuracy and legality of the data they upload or share.",
-            ],
-        },
-        {
-            title: "2. Data Security and Compliance",
-            subtitles: [
-                "We ensure all data is encrypted with 256-bit encryption to safeguard against unauthorized access.",
-                "Our Platform complies with HIPAA for managing sensitive health-related information.",
-                "We strictly adhere to a No-Disclosure Policy, ensuring that your data is not shared or sold without your explicit consent.",
-            ],
-        },
-        {
-            title: "3. Subscription and Billing",
-            subtitles: [
-                "Plans: We offer monthly and yearly subscriptions, billed at the start of each billing cycle.",
-                "Cancellation: Subscriptions can be canceled at any time, with services continuing until the end of the billing period.",
-            ],
-        },
-        {
-            title: "4. Multi-Level Workflows and Access Control",
-            subtitles: [
-                "The Platform supports complex workflows with role-based access for actors like HR, managers, and signatories.",
-                "Users can define conditional rules, expiration periods, and notification settings for workflows.",
-            ],
-        },
-        {
-            title: "5. Limitations of Liability",
-            subtitles: [
-                "We are not liable for any losses resulting from user errors, such as uploading incorrect data or failing to meet legal obligations.",
-            ],
-        },
-        {
-            title: "6. Termination of Services",
-            subtitles: [
-                "We reserve the right to suspend or terminate accounts found in violation of these Terms.",
-            ],
-        },
-        {
-            title: "7. Governing Law",
-            subtitles: [
-                "These Terms are governed by the laws of Mumbai, Maharashtra, India.",
-            ],
-        },
-    ];
     const handleNavigate = () => {
         navigate("/");
         trackEvent("move to home page");
