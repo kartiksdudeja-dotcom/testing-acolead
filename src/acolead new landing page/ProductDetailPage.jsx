@@ -7,6 +7,8 @@ import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 import Header from './Header';
 import Footer from './Footer';
 import BookDemo from './BookDemo';
+import AIConnectorPage from './AIConnectorPage';
+import ZeroLeadBreachPage from './ZeroLeadBreachPage';
 import PersonAddAlt1RoundedIcon from '@mui/icons-material/PersonAddAlt1Rounded';
 import AssignmentTurnedInRoundedIcon from '@mui/icons-material/AssignmentTurnedInRounded';
 import ViewKanbanRoundedIcon from '@mui/icons-material/ViewKanbanRounded';
@@ -461,6 +463,9 @@ const ProductDetailPage = () => {
     // questions are derived from the route's stable page configuration.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [path, status, config.title]);
+
+  if (path === '/zero-lead-breach') return <ZeroLeadBreachPage />;
+  if (path === '/ai/connector') return <AIConnectorPage />;
 
   return (
     <Box sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', '@media (max-width:1023.95px)': { pb: 8 } }}>
