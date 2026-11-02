@@ -7,7 +7,6 @@ import Footer from './Footer';
 const blue = '#0859C1';
 const ink = '#14243A';
 const muted = '#596A80';
-const SectionTitle = ({ eyebrow, children, light = false }) => <Box sx={{ mb: 3 }}><Typography sx={{ color: light ? '#9DC2F6' : blue, fontSize: 10, fontWeight: 800, letterSpacing: '.12em', mb: .8 }}>{eyebrow}</Typography><Typography component="h2" sx={{ color: light ? '#fff' : ink, fontFamily: 'Plus Jakarta Sans, sans-serif', fontSize: { xs: 27, md: 36 }, fontWeight: 800, letterSpacing: '-.03em', lineHeight: 1.15 }}>{children}</Typography></Box>;
 const Card = ({ title, children, dark = false, icon: Icon }) => <Box sx={{ height: '100%', p: 2.2, borderRadius: 2.5, bgcolor: dark ? '#112B50' : '#fff', border: `1px solid ${dark ? '#24436B' : '#E1E9F3'}` }}>
   {Icon && <Box sx={{ width: 42, height: 42, display: 'grid', placeItems: 'center', borderRadius: 1.5, bgcolor: dark ? '#1C3D68' : '#E1F0FD', color: dark ? '#9DC2F6' : blue, mb: 1.4 }}><Icon /></Box>}
   <Typography sx={{ color: dark ? '#fff' : ink, fontFamily: 'Plus Jakarta Sans, sans-serif', fontWeight: 800, fontSize: 15, mb: .7 }}>{title}</Typography>

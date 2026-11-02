@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Accordion, AccordionDetails, AccordionSummary, Box, Button, Container, Grid, Typography } from '@mui/material';
-import { Link as RouterLink } from 'react-router-dom';
 import ExpandMoreRounded from '@mui/icons-material/ExpandMoreRounded';
 import Header from './Header';
 import Footer from './Footer';
